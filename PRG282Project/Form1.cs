@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PRG282Project.PresentationLayer;
 
 namespace PRG282Project
 {
@@ -15,6 +16,11 @@ namespace PRG282Project
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            new PL();
         }
     }
 }

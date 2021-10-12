@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PRG282Project.DataLayer
 {
-    class Encoder
+    class EncoderDecoder
     {
         struct Combo
         {
@@ -76,7 +76,7 @@ namespace PRG282Project.DataLayer
             new Combo("z","c"),
         };
 
-        public  static string Encode(string Input)
+        public static string Encode(string Input)
         {
             string Output = "";
             for (int i = 0; i < Input.Length; i++)
@@ -86,7 +86,7 @@ namespace PRG282Project.DataLayer
             return Output;
         }
 
-        public  static string Decode(string Input)
+        public static string Decode(string Input)
         {
             string Output = "";
             for (int i = 0; i < Input.Length; i++)

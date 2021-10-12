@@ -31,6 +31,14 @@ namespace PRG282Project
             new DL();
             new DataHandler();
             new FileHandler();
+
+            FileHandler.current.SaveToFile("Hello World");
+            FileHandler.current.SaveToFile("Second Line");
+        }
+
+        public  void DisplayError(string    Message)
+        {
+            MessageBox.Show(Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
     }
 }

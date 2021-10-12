@@ -50,7 +50,8 @@
     <Compile Include="DataAccessLayer\DataHandler.cs" />
     <Compile Include="DataAccessLayer\FileHandler.cs" />
     <Compile Include="DataLayer\DL.cs" />
-    <Compile Include="DataLayer\Encoder.cs" />
+    <Compile Include="DataLayer\EncoderDecoder.cs" />
+    <Compile Include="DataLayer\User.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

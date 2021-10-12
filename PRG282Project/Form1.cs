@@ -132,11 +132,14 @@ namespace PRG282Project
             {
                 DisplayError("Please enter a valid Username");
             }
+            var data = new DataHandler();
+            data.ConnectDatabase();
         }
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Userbase.current.Close();
+            
         }
     }
 }

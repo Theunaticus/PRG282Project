@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PRG282Project.PresentationLayer;
 using PRG282Project.ApplicationLayer;
+using PRG282Project.DataAccessLayer;
+using PRG282Project.DataLayer;
 
 namespace PRG282Project
 {
@@ -26,6 +28,9 @@ namespace PRG282Project
             current = this;
             new PL();
             new AL();
+            new DL();
+            new DataHandler();
+            new FileHandler();
         }
     }
 }

@@ -42,6 +42,14 @@ namespace PRG282Project.DataAccessLayer
             }
         }
 
+        public  void    Clear   ()
+        {
+            FileStream FS = new FileStream(AppDomain.CurrentDomain.BaseDirectory + UsersFile,FileMode.Create);
+            StreamWriter SW = new StreamWriter(FS);
+            SW.Close();
+            FS.Close();
+        }
+
         public string[] ReadAllFormFile  ()
         {
             try

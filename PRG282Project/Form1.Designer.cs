@@ -66,6 +66,7 @@ namespace PRG282Project
             // 
             this.txtPassword.Location = new System.Drawing.Point(234, 147);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 3;
             // 
@@ -87,6 +88,7 @@ namespace PRG282Project
             this.btnCreateUser.TabIndex = 5;
             this.btnCreateUser.Text = "Create Account";
             this.btnCreateUser.UseVisualStyleBackColor = true;
+            this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
             // 
             // frmLogin
             // 
@@ -101,6 +103,7 @@ namespace PRG282Project
             this.Controls.Add(this.lblUsername);
             this.Name = "frmLogin";
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.frmLogin_Shown);
             this.ResumeLayout(false);

@@ -52,27 +52,39 @@ namespace PRG282Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LoginAttempt Attempt = AL.current.TryLogin(txtUsername.Text, txtPassword.Text);
-            switch (Attempt.Type)//Maybe move this to PL?
+            if (AL.current.ValidateComponent(txtUsername))
             {
-                case LoginType.Success:
-                    DisplayMessage("Successful Login");
-                    HideMe();
-                    frmDatabase DatabaseForm = new frmDatabase();
-                    DatabaseForm.Show();
-                    break;
-                case LoginType.NoMatch:
-                    DisplayError("Username was not found");
-                    ClearBoxes();
-                    txtUsername.Focus();
-                    break;
-                case LoginType.Invalid:
-                    DisplayError("Invalid Password");
-                    txtPassword.Clear();
-                    txtPassword.Focus();
-                    break;
-                default:
-                    break;
+                if (AL.current.ValidateComponent(txtPassword))
+                {
+                    LoginAttempt Attempt = AL.current.TryLogin(txtUsername.Text, txtPassword.Text);
+                    switch (Attempt.Type)//Maybe move this to PL?
+                    {
+                        case LoginType.Success:
+                            DisplayMessage("Successful Login");
+                            Login();
+                            break;
+                        case LoginType.NoMatch:
+                            DisplayError("Username was not found");
+                            ClearBoxes();
+                            txtUsername.Focus();
+                            break;
+                        case LoginType.Invalid:
+                            DisplayError("Invalid Password");
+                            txtPassword.Clear();
+                            txtPassword.Focus();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    DisplayError("Please enter a valid Password");
+                }
+            }
+            else
+            {
+                DisplayError("Please enter a valid Username");
             }
         }
 
@@ -86,6 +98,45 @@ namespace PRG282Project
         {
             Showing = false;
             current.Hide();
+        }
+
+        void    Login   ()
+        {
+            frmDatabase DatabaseForm = new frmDatabase();
+            DatabaseForm.Show();
+            HideMe();
+        }
+
+        private void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            if (AL.current.ValidateComponent(txtUsername))
+            {
+                if (AL.current.ValidateComponent(txtPassword))
+                {
+                    if (AL.current.TryCreateUser(txtUsername.Text, txtPassword.Text))
+                    {
+                        DisplayMessage("User Created");
+                        ClearBoxes();
+                        Login();
+                    }
+                    else {
+                        DisplayError("Username already exists");
+                    }
+                }
+                else
+                {
+                    DisplayError("Please enter a valid Password");
+                }
+            }
+            else
+            {
+                DisplayError("Please enter a valid Username");
+            }
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Userbase.current.Close();
         }
     }
 }

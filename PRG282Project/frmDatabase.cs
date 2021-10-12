@@ -16,5 +16,10 @@ namespace PRG282Project
         {
             InitializeComponent();
         }
+
+        private void frmDatabase_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmLogin.current.Close();
+        }
     }
 }

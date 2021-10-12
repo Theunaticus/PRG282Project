@@ -49,6 +49,7 @@
     <Compile Include="ApplicationLayer\AL.cs" />
     <Compile Include="DataAccessLayer\DataHandler.cs" />
     <Compile Include="DataAccessLayer\FileHandler.cs" />
+    <Compile Include="DataLayer\CreateUserAttempt.cs" />
     <Compile Include="DataLayer\DL.cs" />
     <Compile Include="ApplicationLayer\EncoderDecoder.cs" />
     <Compile Include="DataLayer\LoginAttempt.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDatabase.resx">
+      <DependentUpon>frmDatabase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

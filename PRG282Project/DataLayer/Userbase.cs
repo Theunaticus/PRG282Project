@@ -24,20 +24,23 @@ namespace PRG282Project.DataLayer
             current = this;
             AllUsers = new List<User>();
             string[] Lines = FileHandler.current.ReadAllFormFile();
-            for (int i = 0; i < Lines.Length; i++)
+            if (Lines!=null)
             {
-                int StartPos = Pos(":", Lines[i]);
-                int EndPos = Pos("|", Lines[i]);
-                if (StartPos>0 && EndPos>StartPos)
+                for (int i = 0; i < Lines.Length; i++)
                 {
-                    string UserName = Lines[i].Substring(StartPos + 1, EndPos - StartPos - 1);
-
-                    string Line = Lines[i].Substring(EndPos + 1, Lines[i].Length - EndPos - 1);
-                    StartPos = Pos(":", Line);
-                    if (StartPos>0)
+                    int StartPos = Pos(":", Lines[i]);
+                    int EndPos = Pos("|", Lines[i]);
+                    if (StartPos > 0 && EndPos > StartPos)
                     {
-                        string Password = Line.Substring(StartPos + 1, Line.Length - StartPos - 1);
-                        AllUsers.Add(new User(UserName,Password));
+                        string UserName = Lines[i].Substring(StartPos + 1, EndPos - StartPos - 1);
+
+                        string Line = Lines[i].Substring(EndPos + 1, Lines[i].Length - EndPos - 1);
+                        StartPos = Pos(":", Line);
+                        if (StartPos > 0)
+                        {
+                            string Password = Line.Substring(StartPos + 1, Line.Length - StartPos - 1);
+                            AllUsers.Add(new User(UserName, Password));
+                        }
                     }
                 }
             }
@@ -70,6 +73,20 @@ namespace PRG282Project.DataLayer
         public  List<User>  GetAllUsers ()
         {
             return AllUsers;
+        }
+
+        public  void AddUser    (User newUser)
+        {
+            AllUsers.Add(newUser);
+        }
+
+        public  void Close  ()
+        {
+            FileHandler.current.Clear();
+            for (int i = 0; i < AllUsers.Count; i++)
+            {
+                FileHandler.current.SaveToFile(AllUsers[i].ToLine());
+            }
         }
     }
 }

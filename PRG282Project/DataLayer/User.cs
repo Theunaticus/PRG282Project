@@ -26,5 +26,10 @@ namespace PRG282Project.DataLayer
         {
             return _Username == Username;
         }
+
+        public  string  ToLine  ()
+        {
+            return "Username:" + Username + "|Password:" + Password;
+        }
     }
 }

@@ -39,6 +39,8 @@ namespace PRG282Project
             this.btnExit = new System.Windows.Forms.Button();
             this.chkShow = new System.Windows.Forms.CheckBox();
             this.lblRegister = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -46,7 +48,7 @@ namespace PRG282Project
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblUsername.Location = new System.Drawing.Point(9, 191);
+            this.lblUsername.Location = new System.Drawing.Point(9, 172);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(74, 16);
             this.lblUsername.TabIndex = 0;
@@ -57,7 +59,7 @@ namespace PRG282Project
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblPassword.Location = new System.Drawing.Point(9, 245);
+            this.lblPassword.Location = new System.Drawing.Point(9, 226);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(71, 16);
             this.lblPassword.TabIndex = 1;
@@ -66,18 +68,18 @@ namespace PRG282Project
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(12, 210);
+            this.txtUsername.Location = new System.Drawing.Point(12, 191);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(298, 27);
+            this.txtUsername.Size = new System.Drawing.Size(288, 27);
             this.txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(12, 264);
+            this.txtPassword.Location = new System.Drawing.Point(12, 245);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(298, 27);
+            this.txtPassword.Size = new System.Drawing.Size(288, 27);
             this.txtPassword.TabIndex = 3;
             // 
             // btnLogin
@@ -87,9 +89,9 @@ namespace PRG282Project
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(12, 323);
+            this.btnLogin.Location = new System.Drawing.Point(12, 304);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(147, 33);
+            this.btnLogin.Size = new System.Drawing.Size(141, 33);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -102,9 +104,9 @@ namespace PRG282Project
             this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateUser.ForeColor = System.Drawing.Color.White;
-            this.btnCreateUser.Location = new System.Drawing.Point(163, 323);
+            this.btnCreateUser.Location = new System.Drawing.Point(159, 304);
             this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(147, 33);
+            this.btnCreateUser.Size = new System.Drawing.Size(141, 33);
             this.btnCreateUser.TabIndex = 5;
             this.btnCreateUser.Text = "Register";
             this.btnCreateUser.UseVisualStyleBackColor = false;
@@ -117,7 +119,7 @@ namespace PRG282Project
             this.lblLogin.AutoSize = true;
             this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lblLogin.Location = new System.Drawing.Point(51, 149);
+            this.lblLogin.Location = new System.Drawing.Point(42, 137);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(225, 25);
             this.lblLogin.TabIndex = 6;
@@ -130,42 +132,55 @@ namespace PRG282Project
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(12, 362);
+            this.btnExit.Location = new System.Drawing.Point(12, 343);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(298, 33);
+            this.btnExit.Size = new System.Drawing.Size(288, 33);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // chkShow
             // 
             this.chkShow.AutoSize = true;
             this.chkShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkShow.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.chkShow.Location = new System.Drawing.Point(24, 300);
+            this.chkShow.Location = new System.Drawing.Point(24, 281);
             this.chkShow.Name = "chkShow";
             this.chkShow.Size = new System.Drawing.Size(123, 20);
             this.chkShow.TabIndex = 8;
             this.chkShow.Text = "Show Password";
             this.chkShow.UseVisualStyleBackColor = true;
+            this.chkShow.Click += new System.EventHandler(this.chkShow_Click);
             // 
             // lblRegister
             // 
             this.lblRegister.AutoSize = true;
             this.lblRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegister.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblRegister.Location = new System.Drawing.Point(194, 301);
+            this.lblRegister.Location = new System.Drawing.Point(178, 282);
             this.lblRegister.Name = "lblRegister";
             this.lblRegister.Size = new System.Drawing.Size(100, 16);
             this.lblRegister.TabIndex = 9;
             this.lblRegister.Text = "Not registered?";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PRG282Project.Properties.Resources.bclogo;
+            this.pictureBox1.Location = new System.Drawing.Point(104, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 93);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(323, 411);
+            this.ClientSize = new System.Drawing.Size(311, 387);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblRegister);
             this.Controls.Add(this.chkShow);
             this.Controls.Add(this.btnExit);
@@ -184,6 +199,7 @@ namespace PRG282Project
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.frmLogin_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +217,7 @@ namespace PRG282Project
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.CheckBox chkShow;
         private System.Windows.Forms.Label lblRegister;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

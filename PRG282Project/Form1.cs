@@ -141,5 +141,22 @@ namespace PRG282Project
             Userbase.current.Close();
             
         }
+
+        private void chkShow_Click(object sender, EventArgs e)
+        {
+            if (chkShow.Checked == true)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

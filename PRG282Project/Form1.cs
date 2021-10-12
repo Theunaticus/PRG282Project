@@ -14,11 +14,12 @@ using PRG282Project.DataLayer;
 
 namespace PRG282Project
 {
-    public partial class Form1 : Form
+    public partial class frmLogin : Form
     {
-        public static Form1 current;
+        public static frmLogin current;
+        public bool Showing;
 
-        public Form1()
+        public frmLogin()
         {
             InitializeComponent();
         }
@@ -31,14 +32,60 @@ namespace PRG282Project
             new DL();
             new DataHandler();
             new FileHandler();
-
-            FileHandler.current.SaveToFile("Hello World");
-            FileHandler.current.SaveToFile("Second Line");
+            new Userbase();
         }
 
-        public  void DisplayError(string    Message)
+        public void DisplayError(string Message)
         {
-            MessageBox.Show(Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            MessageBox.Show(Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void DisplayMessage(string Message)
+        {
+            MessageBox.Show(Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void frmLogin_Shown(object sender, EventArgs e)
+        {
+            Showing = true;
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            LoginAttempt Attempt = AL.current.TryLogin(txtUsername.Text, txtPassword.Text);
+            switch (Attempt.Type)//Maybe move this to PL?
+            {
+                case LoginType.Success:
+                    DisplayMessage("Successful Login");
+                    HideMe();
+                    frmDatabase DatabaseForm = new frmDatabase();
+                    DatabaseForm.Show();
+                    break;
+                case LoginType.NoMatch:
+                    DisplayError("Username was not found");
+                    ClearBoxes();
+                    txtUsername.Focus();
+                    break;
+                case LoginType.Invalid:
+                    DisplayError("Invalid Password");
+                    txtPassword.Clear();
+                    txtPassword.Focus();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        void    ClearBoxes  ()
+        {
+            txtUsername.Clear();
+            txtPassword.Clear();
+        }
+
+        void    HideMe  ()
+        {
+            Showing = false;
+            current.Hide();
         }
     }
 }

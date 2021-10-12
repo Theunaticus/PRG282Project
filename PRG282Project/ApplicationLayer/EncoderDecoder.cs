@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRG282Project.DataLayer
+namespace PRG282Project.ApplicationLayer
 {
     class EncoderDecoder
     {
@@ -68,7 +68,7 @@ namespace PRG282Project.DataLayer
             new Combo("r","h"),
             new Combo("s","P"),
             new Combo("t","b"),
-            new Combo("y","X"),
+            new Combo("u","X"),
             new Combo("v","J"),
             new Combo("w","k"),
             new Combo("x","B"),

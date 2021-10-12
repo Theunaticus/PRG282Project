@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PRG282Project.DataLayer;
 
 namespace PRG282Project.DataAccessLayer
 {
@@ -13,6 +14,11 @@ namespace PRG282Project.DataAccessLayer
         public  DataHandler ()
         {
             current = this;
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return Userbase.current.GetAllUsers();
         }
     }
 }

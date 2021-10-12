@@ -21,5 +21,10 @@ namespace PRG282Project.DataLayer
         {
             return Password == _Password;
         }
+
+        public  bool    Match   (string _Username)
+        {
+            return _Username == Username;
+        }
     }
 }

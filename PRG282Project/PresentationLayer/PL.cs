@@ -14,5 +14,14 @@ namespace PRG282Project.PresentationLayer
         {
             current = this;
         }
+
+        public  void    DisplayError    (string Message)
+        {
+            if (frmLogin.current.Showing)
+            {
+                frmLogin.current.DisplayError(Message);
+                return;
+            }
+        }
     }
 }

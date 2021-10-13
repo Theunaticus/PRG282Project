@@ -46,7 +46,7 @@ namespace PRG282Project
             MessageBox.Show(Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public  void DisplayStudents    ()
+        public void DisplayStudents()
         {
             dgvStudents.DataSource = DataHandler.current.GetStudents();
         }
@@ -68,7 +68,7 @@ namespace PRG282Project
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (ValidateStudent()==-1)
+            if (ValidateStudent() == -1)
             {
                 if (AL.current.ValidImage())
                 {
@@ -83,7 +83,7 @@ namespace PRG282Project
                         string Address = txtAddress.Text;
                         string Codes = lbCodes.Text;
                         string Path = AL.current.LastImageFile;
-                        StudentData Data = new StudentData(Number,Name,Surname,DOB,Gender,Phone,Address,Codes,Path);
+                        StudentData Data = new StudentData(Number, Name, Surname, DOB, Gender, Phone, Address, Codes, Path);
                         AL.current.CreateRecord(Data);
                         ClearStudents();
                     }
@@ -107,6 +107,10 @@ namespace PRG282Project
         {
             txtStudNumber.Clear();
             txtStudNames.Clear();
+            AL.current.LastImageFile = null;
+            cbbGender.SelectedIndex = -1;
+            txtPhone.Clear();
+            txtAddress.Clear();
         }
         int ValidateStudent()
         {
@@ -120,7 +124,7 @@ namespace PRG282Project
 
             for (int i = 0; i < Flags.Count; i++)
             {
-                if (Flags[i]==false)
+                if (Flags[i] == false)
                 {
                     return i;
                 }
@@ -134,18 +138,19 @@ namespace PRG282Project
             DisplayRow(e.RowIndex);
         }
 
-        void    DisplayRow  (int    Index)
+        void DisplayRow(int Index)
         {
-            if (Index>=0)
+            if (Index >= 0)
             {
                 DataGridViewRow Row = dgvStudents.Rows[Index];
 
                 txtStudNumber.Text = Row.Cells["StudentID"].Value.ToString();
                 txtStudNames.Text = Row.Cells["Name"].Value.ToString();
-                txtStudNames.Text += Row.Cells["Surname"].Value.ToString();
+                txtStudNames.Text += " "+Row.Cells["Surname"].Value.ToString();
                 cbbGender.Text = Row.Cells["Gender"].Value.ToString();
                 txtPhone.Text = Row.Cells["Phone"].Value.ToString();
                 txtAddress.Text = Row.Cells["Address"].Value.ToString();
+                AL.current.LastImageFile = Row.Cells["Student Picture"].Value.ToString();
                 //List Box Display?
             }
         }
@@ -180,10 +185,94 @@ namespace PRG282Project
 
                 ModuleData Data = new ModuleData(Code, Name, Desc, Resc);
                 AL.current.CreateRecord(Data);
+                ClearModule();
             }
             else
             {
                 PL.current.DisplayError("This input does not contain a valid value");
+            }
+        }
+
+        void ClearModule()
+        {
+            txtModCode.Clear();
+            txtModName.Clear();
+            txtModDesc.Clear();
+            txtModResources.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (ValidateModule() == -1)
+            {
+                string Code = txtModCode.Text;
+                string Name = txtModName.Text;
+                string Desc = txtModDesc.Text;
+                string Resc = txtModResources.Text;
+
+                ModuleData Data = new ModuleData(Code, Name, Desc, Resc);
+                AL.current.UpdateRecord(Data);
+                ClearModule();
+            }
+            else
+            {
+                PL.current.DisplayError("This input does not contain a valid value");
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (ValidateStudent() == -1)
+            {
+                if (AL.current.ValidImage())
+                {
+                    if (AL.current.ValidNames(txtStudNames.Text))
+                    {
+                        string Number = txtStudNumber.Text;
+                        string Name = AL.current.GetName(txtStudNames.Text);
+                        string Surname = AL.current.GetSurname(txtStudNames.Text);
+                        string DOB = dtpDOB.Value.ToString();
+                        string Gender = cbbGender.SelectedItem.ToString();
+                        string Phone = txtPhone.Text;
+                        string Address = txtAddress.Text;
+                        string Codes = lbCodes.Text;
+                        string Path = AL.current.LastImageFile;
+                        StudentData Data = new StudentData(Number, Name, Surname, DOB, Gender, Phone, Address, Codes, Path);
+                        AL.current.UpdateRecord(Data);
+                        ClearStudents();
+                    }
+                    else
+                    {
+                        PL.current.DisplayError("Please enter a valid name and surname");
+                    }
+                }
+                else
+                {
+                    PL.current.DisplayError("Please choose a valid student picture");
+                }
+            }
+            else
+            {
+                PL.current.DisplayError("This input does not contain a valid value");
+            }
+        }
+
+        private void dgvModules_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DisplayModule(e.RowIndex);
+        }
+
+        void    DisplayModule   (int    Index)
+        {
+            if (Index >= 0)
+            {
+                DataGridViewRow Row = dgvModules.Rows[Index];
+
+                txtModCode.Text = Row.Cells["Code"].Value.ToString();
+                txtModName.Text = Row.Cells["Name"].Value.ToString();
+                txtModDesc.Text = " " + Row.Cells["Description"].Value.ToString();
+                txtModResources.Text = Row.Cells["Resources"].Value.ToString();
+                //List Box Display?
             }
         }
     }

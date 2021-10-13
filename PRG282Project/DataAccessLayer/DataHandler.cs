@@ -124,13 +124,29 @@ namespace PRG282Project.DataAccessLayer
                     Insert += "Phone = '" + NewData.Phone+"',";
                     Insert += "Address = '" + NewData.Address+"',";
                     Insert += "[Module Codes] = '" + NewData.ModuleCodes+"',";
-                    Insert += "[Student Picture] = '" + NewData.ImagePath;
-                    Insert  += "Where StudentID = '" + NewData.StNumber+"',";
+                    Insert += "[Student Picture] = '" + NewData.ImagePath+"'";
+                    Insert  += " Where StudentID = '" + NewData.StNumber+"'";
                     SqlCommand UpdateCMD = new SqlCommand(Insert, connection);
                     connection.Open();
                     UpdateCMD.ExecuteNonQuery();
                     connection.Close();
                     PL.current.DisplaySuccess("Record successfully updated");
+                }
+                if (Data.GetType() == typeof(ModuleData))
+                {
+                    ModuleData NewData = (ModuleData)Data;
+                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    string c = "','";
+                    string Insert = @"UPDATE Modules SET ";
+                    Insert +=  "Name = '"+NewData.Name +"',";
+                    Insert +=  "Description = '"+NewData.Description +"',";
+                    Insert +=  "Resources = '"+NewData.ResourceLink+"'";
+                    Insert += " Where Code = '" + NewData.Code + "'";
+                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                    connection.Open();
+                    InsertCMD.ExecuteNonQuery();
+                    connection.Close();
+                    PL.current.DisplaySuccess("Record successfully inserted");
                 }
             }
             catch (Exception e)

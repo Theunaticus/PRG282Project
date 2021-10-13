@@ -103,7 +103,12 @@ namespace PRG282Project.ApplicationLayer
                 LastImageFile = Dialog.FileName;
             }
         }
-
+        
+        public  void    UpdateRecord    (RecordData Data)
+        {
+            DataHandler.current.UpdateRecord(Data);
+        }
+        
         public  void    CreateRecord    (RecordData Data)
         {
             DataHandler.current.InsertRecord(Data);

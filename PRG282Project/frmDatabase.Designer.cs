@@ -262,6 +262,7 @@ namespace PRG282Project
             this.btnStudImage.TabIndex = 10;
             this.btnStudImage.Text = "Add";
             this.btnStudImage.UseVisualStyleBackColor = false;
+            this.btnStudImage.Click += new System.EventHandler(this.btnStudImage_Click);
             // 
             // openImage
             // 
@@ -369,6 +370,7 @@ namespace PRG282Project
             this.btnCreate.TabIndex = 0;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // lblStudents
             // 

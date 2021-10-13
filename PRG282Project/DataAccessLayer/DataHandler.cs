@@ -54,9 +54,26 @@ namespace PRG282Project.DataAccessLayer
 
         public  void    InsertRecord(RecordData Data)
         {
-            if (Data.GetType()==typeof(StudentData))
+            try
             {
-
+                if (Data.GetType() == typeof(StudentData))
+                {
+                    StudentData NewData = (StudentData)Data;
+                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    string c = "','";
+                    string Insert = @"INSERT INTO tblStudents (Name, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
+                    Insert += " Values ('" + NewData.StName + c + NewData.Surname + c + NewData.DOB + c + NewData.Gender + c + NewData.Phone + c + NewData.Address + c + NewData.ModuleCodes + c + NewData.StNumber + c + NewData.ImagePath;
+                    Insert += "')";
+                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                    connection.Open();
+                    InsertCMD.ExecuteNonQuery();
+                    connection.Close();
+                    PL.current.DisplaySuccess("Record successfully inserted");
+                }
+            }
+            catch (Exception e)
+            {
+                PL.current.DisplayError(e.Message);
             }
         }
 

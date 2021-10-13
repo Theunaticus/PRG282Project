@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using PRG282Project.ApplicationLayer;
 
 namespace PRG282Project.PresentationLayer
 {
@@ -32,6 +34,27 @@ namespace PRG282Project.PresentationLayer
         public  void DisplayDatabase    ()
         {
             frmDatabase.current.DisplayStudents();
+        }
+
+        public  void DisplaySuccess(string Message)
+        {
+            if (frmLogin.current.Showing)
+            {
+                frmLogin.current.DisplayMessage(Message);
+                return;
+            }
+            if (frmDatabase.current.Showing)
+            {
+                frmDatabase.current.DisplayMessage(Message);
+                return;
+            }
+            MessageBox.Show(Message);
+        }
+
+        public  void    ShowExplorer    ()
+        {
+            OpenFileDialog fdlg = new OpenFileDialog();
+            AL.current.ImportPicture(fdlg.ShowDialog(),fdlg);
         }
     }
 }

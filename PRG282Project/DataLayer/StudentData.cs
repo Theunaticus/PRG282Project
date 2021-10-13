@@ -8,8 +8,8 @@ namespace PRG282Project.DataLayer
 {
     class StudentData : RecordData
     {
-        public string Number;
-        public string Name;
+        public string StNumber;
+        public string StName;
         public string Surname;
         public string DOB;
         public string Gender;
@@ -20,8 +20,8 @@ namespace PRG282Project.DataLayer
 
         public  StudentData (string _Num,string _Name,string _Surname,string _DOB,string _Gender,string _Phone,string _Address,string _Codes,string _Path)
         {
-            Number = _Num;
-            Name = _Name;
+            StNumber = _Num;
+            StName = _Name;
             Surname = _Surname;
             DOB = _DOB;
             Gender = _Gender;

@@ -18,7 +18,7 @@ namespace PRG282Project.DataAccessLayer
         //theuns se rekenaar: Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
         //Francois se rekenaar: DESKTOP-M2MPA17\SQLEXPRESS
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
-        string ConnectionString = @"Data Source=LAPTOP-H72V6H51\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
+        string ConnectionString = @"Data Source=DESKTOP-68BFB0T\PRG282SQL;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {
@@ -161,6 +161,28 @@ namespace PRG282Project.DataAccessLayer
                     for (int i = 0; i < Table.Rows.Count; i++)
                     {
                         if (Table.Rows[i]["StudentID"].ToString() == StudID)
+                        {
+                            return i;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    frmDatabase.current.DisplayError(e.Message);
+                }
+                return -1;
+            }
+
+        }
+        public int searchModule(string modCode)
+        {
+            {
+                try
+                {
+                    DataTable Table = GetModules();
+                    for (int i = 0; i < Table.Rows.Count; i++)
+                    {
+                        if (Table.Rows[i]["Code"].ToString() == modCode)
                         {
                             return i;
                         }

@@ -294,5 +294,18 @@ namespace PRG282Project
             var data = new DataHandler();
             data.deleteRecord(txtModCode.Text, "Modules", "Code");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int rowIndex = DataHandler.current.searchModule(textBox1.Text);
+            if (rowIndex != -1)
+            {
+                DisplayRow(rowIndex);
+                dgvModules.ClearSelection();
+                dgvModules.Rows[rowIndex].Selected = true;
+            }
+
+        }
     }
 }
+

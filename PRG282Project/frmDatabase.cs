@@ -19,6 +19,7 @@ namespace PRG282Project
         public frmDatabase()
         {
             InitializeComponent();
+            current = this;
         }
 
         private void frmDatabase_FormClosed(object sender, FormClosedEventArgs e)
@@ -50,5 +51,6 @@ namespace PRG282Project
         {
             dgvStudents.DataSource = DataHandler.current.GetStudents();
         }
+
     }
 }

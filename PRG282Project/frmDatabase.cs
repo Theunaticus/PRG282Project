@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using PRG282Project.PresentationLayer;
+﻿using PRG282Project.ApplicationLayer;
 using PRG282Project.DataAccessLayer;
-using PRG282Project.ApplicationLayer;
 using PRG282Project.DataLayer;
-using PRG282Project.Properties;
+using PRG282Project.PresentationLayer;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace PRG282Project
 {
@@ -113,6 +107,7 @@ namespace PRG282Project
             cbbGender.SelectedIndex = -1;
             txtPhone.Clear();
             txtAddress.Clear();
+            textBox2.Clear();
         }
         int ValidateStudent()
         {
@@ -122,7 +117,7 @@ namespace PRG282Project
             //Flags.Add(AL.current.ValidateComponent(dtpDOB));
             Flags.Add(AL.current.ValidateComponent(cbbGender));
             Flags.Add(AL.current.ValidateComponent(txtPhone));
-            //Flags.Add(AL.current.ValidateComponent(lbCodes));
+            Flags.Add(AL.current.ValidateComponent(textBox2));
 
             for (int i = 0; i < Flags.Count; i++)
             {
@@ -153,7 +148,7 @@ namespace PRG282Project
                 txtPhone.Text = Row.Cells["Phone"].Value.ToString();
                 txtAddress.Text = Row.Cells["Address"].Value.ToString();
                 AL.current.LastImageFile = Row.Cells["Student Picture"].Value.ToString();
-                //List Box Display?
+                textBox2.Text   = Row.Cells["Module Codes"].Value.ToString();
             }
         }
 

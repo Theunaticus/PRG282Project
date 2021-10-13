@@ -53,6 +53,7 @@
     <Compile Include="DataLayer\DL.cs" />
     <Compile Include="ApplicationLayer\EncoderDecoder.cs" />
     <Compile Include="DataLayer\LoginAttempt.cs" />
+    <Compile Include="DataLayer\RecordData.cs" />
     <Compile Include="DataLayer\User.cs" />
     <Compile Include="DataLayer\Userbase.cs" />
     <Compile Include="Form1.cs">

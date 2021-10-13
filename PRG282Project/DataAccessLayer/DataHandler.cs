@@ -17,8 +17,8 @@ namespace PRG282Project.DataAccessLayer
         //armandt se rekenaar: LAPTOP-H72V6H51\SQLEXPRESS
         //theuns se rekenaar: Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
         //Francois se rekenaar: DESKTOP-M2MPA17\SQLEXPRESS
-        public static DataHandler current;
-        string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
+        public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
+        string ConnectionString = @"Data Source=LAPTOP-H72V6H51\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {

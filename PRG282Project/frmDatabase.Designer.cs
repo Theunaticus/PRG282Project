@@ -41,7 +41,6 @@ namespace PRG282Project
             this.txtStudNumber = new System.Windows.Forms.TextBox();
             this.txtStudNames = new System.Windows.Forms.TextBox();
             this.gbStudFields = new System.Windows.Forms.GroupBox();
-            this.lbCodes = new System.Windows.Forms.ListBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.cbbGender = new System.Windows.Forms.ComboBox();
@@ -66,15 +65,15 @@ namespace PRG282Project
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbModFields = new System.Windows.Forms.GroupBox();
-            this.lbResources = new System.Windows.Forms.ListBox();
             this.lblResources = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtModDesc = new System.Windows.Forms.TextBox();
+            this.txtModName = new System.Windows.Forms.TextBox();
             this.txtModCode = new System.Windows.Forms.TextBox();
             this.lblModDesc = new System.Windows.Forms.Label();
             this.lblModName = new System.Windows.Forms.Label();
             this.lblModCode = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.txtModResources = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.gbStudFields.SuspendLayout();
             this.gbStudControls.SuspendLayout();
@@ -88,8 +87,11 @@ namespace PRG282Project
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudents.Location = new System.Drawing.Point(16, 53);
             this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.RowHeadersVisible = false;
+            this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudents.Size = new System.Drawing.Size(511, 237);
             this.dgvStudents.TabIndex = 0;
+            this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
             // lblStudNumber
             // 
@@ -179,7 +181,7 @@ namespace PRG282Project
             // 
             // gbStudFields
             // 
-            this.gbStudFields.Controls.Add(this.lbCodes);
+            this.gbStudFields.Controls.Add(this.richTextBox1);
             this.gbStudFields.Controls.Add(this.txtAddress);
             this.gbStudFields.Controls.Add(this.txtPhone);
             this.gbStudFields.Controls.Add(this.cbbGender);
@@ -202,15 +204,6 @@ namespace PRG282Project
             this.gbStudFields.TabIndex = 1;
             this.gbStudFields.TabStop = false;
             this.gbStudFields.Text = "Student Information";
-            // 
-            // lbCodes
-            // 
-            this.lbCodes.FormattingEnabled = true;
-            this.lbCodes.ItemHeight = 16;
-            this.lbCodes.Location = new System.Drawing.Point(362, 111);
-            this.lbCodes.Name = "lbCodes";
-            this.lbCodes.Size = new System.Drawing.Size(129, 84);
-            this.lbCodes.TabIndex = 15;
             // 
             // txtAddress
             // 
@@ -295,6 +288,7 @@ namespace PRG282Project
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -339,6 +333,7 @@ namespace PRG282Project
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCreate
             // 
@@ -371,8 +366,10 @@ namespace PRG282Project
             this.dgvModules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvModules.Location = new System.Drawing.Point(537, 53);
             this.dgvModules.Name = "dgvModules";
+            this.dgvModules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvModules.Size = new System.Drawing.Size(387, 237);
             this.dgvModules.TabIndex = 4;
+            this.dgvModules.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModules_CellContentClick);
             // 
             // lblMods
             // 
@@ -459,6 +456,7 @@ namespace PRG282Project
             this.button3.TabIndex = 2;
             this.button3.Text = "Update";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button5
             // 
@@ -473,13 +471,14 @@ namespace PRG282Project
             this.button5.TabIndex = 0;
             this.button5.Text = "Create";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // gbModFields
             // 
-            this.gbModFields.Controls.Add(this.lbResources);
+            this.gbModFields.Controls.Add(this.txtModResources);
             this.gbModFields.Controls.Add(this.lblResources);
-            this.gbModFields.Controls.Add(this.textBox2);
-            this.gbModFields.Controls.Add(this.textBox4);
+            this.gbModFields.Controls.Add(this.txtModDesc);
+            this.gbModFields.Controls.Add(this.txtModName);
             this.gbModFields.Controls.Add(this.txtModCode);
             this.gbModFields.Controls.Add(this.lblModDesc);
             this.gbModFields.Controls.Add(this.lblModName);
@@ -492,15 +491,6 @@ namespace PRG282Project
             this.gbModFields.TabStop = false;
             this.gbModFields.Text = "Module Information";
             // 
-            // lbResources
-            // 
-            this.lbResources.FormattingEnabled = true;
-            this.lbResources.ItemHeight = 16;
-            this.lbResources.Location = new System.Drawing.Point(161, 133);
-            this.lbResources.Name = "lbResources";
-            this.lbResources.Size = new System.Drawing.Size(207, 68);
-            this.lbResources.TabIndex = 16;
-            // 
             // lblResources
             // 
             this.lblResources.AutoSize = true;
@@ -510,19 +500,19 @@ namespace PRG282Project
             this.lblResources.TabIndex = 14;
             this.lblResources.Text = "Module Resources:";
             // 
-            // textBox2
+            // txtModDesc
             // 
-            this.textBox2.Location = new System.Drawing.Point(161, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(207, 22);
-            this.textBox2.TabIndex = 13;
+            this.txtModDesc.Location = new System.Drawing.Point(161, 101);
+            this.txtModDesc.Name = "txtModDesc";
+            this.txtModDesc.Size = new System.Drawing.Size(207, 22);
+            this.txtModDesc.TabIndex = 13;
             // 
-            // textBox4
+            // txtModName
             // 
-            this.textBox4.Location = new System.Drawing.Point(161, 64);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(164, 22);
-            this.textBox4.TabIndex = 9;
+            this.txtModName.Location = new System.Drawing.Point(161, 64);
+            this.txtModName.Name = "txtModName";
+            this.txtModName.Size = new System.Drawing.Size(164, 22);
+            this.txtModName.TabIndex = 9;
             // 
             // txtModCode
             // 
@@ -573,6 +563,13 @@ namespace PRG282Project
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // txtModResources
+            // 
+            this.txtModResources.Location = new System.Drawing.Point(161, 139);
+            this.txtModResources.Name = "txtModResources";
+            this.txtModResources.Size = new System.Drawing.Size(207, 22);
+            this.txtModResources.TabIndex = 15;
+            // 
             // frmDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -622,7 +619,6 @@ namespace PRG282Project
         private System.Windows.Forms.TextBox txtStudNumber;
         private System.Windows.Forms.TextBox txtStudNames;
         private System.Windows.Forms.GroupBox gbStudFields;
-        private System.Windows.Forms.ListBox lbCodes;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.ComboBox cbbGender;
@@ -647,14 +643,14 @@ namespace PRG282Project
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox gbModFields;
-        private System.Windows.Forms.ListBox lbResources;
         private System.Windows.Forms.Label lblResources;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtModDesc;
+        private System.Windows.Forms.TextBox txtModName;
         private System.Windows.Forms.TextBox txtModCode;
         private System.Windows.Forms.Label lblModDesc;
         private System.Windows.Forms.Label lblModName;
         private System.Windows.Forms.Label lblModCode;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.TextBox txtModResources;
     }
 }

@@ -103,7 +103,12 @@ namespace PRG282Project.ApplicationLayer
                 LastImageFile = Dialog.FileName;
             }
         }
-
+        
+        public  void    UpdateRecord    (RecordData Data)
+        {
+            DataHandler.current.UpdateRecord(Data);
+        }
+        
         public  void    CreateRecord    (RecordData Data)
         {
             DataHandler.current.InsertRecord(Data);
@@ -139,7 +144,7 @@ namespace PRG282Project.ApplicationLayer
         public  string  GetSurname  (string Names)
         {
             int pos = Pos(" ", Names);
-            return Names.Substring(pos + 1, Names.Length - pos);
+            return Names.Substring(pos + 1, Names.Length - pos-1);
         }
 
         public  int Pos(string Substring, string String)

@@ -52,8 +52,20 @@ namespace PRG282Project.DataAccessLayer
             return Result;
         }
 
+        public DataTable GetModules()
+        {
+            string Query = @"SELECT * FROM Modules";
+            SqlDataAdapter DA = new SqlDataAdapter(Query, ConnectionString);
+            DataTable Result = new DataTable();
+            DA.Fill(Result);
+            return Result;
+        }
+
         public  void    InsertRecord(RecordData Data)
         {
+            //Check if record exists
+            //!!!!!!!!!!!!!!!!!!!!!!!!
+            //
             try
             {
                 if (Data.GetType() == typeof(StudentData))
@@ -70,11 +82,102 @@ namespace PRG282Project.DataAccessLayer
                     connection.Close();
                     PL.current.DisplaySuccess("Record successfully inserted");
                 }
+                if (Data.GetType()==typeof(ModuleData))
+                {
+                    ModuleData NewData = (ModuleData)Data;
+                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    string c = "','";
+                    string Insert = @"INSERT INTO Modules (Code, Name, Description, Resources)";
+                    Insert += " Values ('" + NewData.Code + c + NewData.Name + c + NewData.Description + c + NewData.ResourceLink;
+                    Insert += "')";
+                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                    connection.Open();
+                    InsertCMD.ExecuteNonQuery();
+                    connection.Close();
+                    PL.current.DisplaySuccess("Record successfully inserted");
+                }
             }
             catch (Exception e)
             {
                 PL.current.DisplayError(e.Message);
             }
+            PL.current.DisplayDatabase();
+        }
+
+        public void UpdateRecord(RecordData Data)
+        {
+            //Check if record exists
+            //!!!!!!!!!!!!!!!!!!!!!!!!
+            //
+            try
+            {
+                if (Data.GetType() == typeof(StudentData))
+                {
+                    StudentData NewData = (StudentData)Data;
+                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    string c = "','";
+                    string Insert = @"UPDATE tblStudents SET ";//, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
+                    Insert += "Name = '" + NewData.StName+"',";
+                    Insert += "Surname = '" + NewData.Surname+"',";
+                    Insert += "DOB = '" + NewData.DOB+"',";
+                    Insert += "Gender = '" + NewData.Gender+"',";
+                    Insert += "Phone = '" + NewData.Phone+"',";
+                    Insert += "Address = '" + NewData.Address+"',";
+                    Insert += "[Module Codes] = '" + NewData.ModuleCodes+"',";
+                    Insert += "[Student Picture] = '" + NewData.ImagePath+"'";
+                    Insert  += " Where StudentID = '" + NewData.StNumber+"'";
+                    SqlCommand UpdateCMD = new SqlCommand(Insert, connection);
+                    connection.Open();
+                    UpdateCMD.ExecuteNonQuery();
+                    connection.Close();
+                    PL.current.DisplaySuccess("Record successfully updated");
+                }
+                if (Data.GetType() == typeof(ModuleData))
+                {
+                    ModuleData NewData = (ModuleData)Data;
+                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    string c = "','";
+                    string Insert = @"UPDATE Modules SET ";
+                    Insert +=  "Name = '"+NewData.Name +"',";
+                    Insert +=  "Description = '"+NewData.Description +"',";
+                    Insert +=  "Resources = '"+NewData.ResourceLink+"'";
+                    Insert += " Where Code = '" + NewData.Code + "'";
+                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                    connection.Open();
+                    InsertCMD.ExecuteNonQuery();
+                    connection.Close();
+                    PL.current.DisplaySuccess("Record successfully inserted");
+                }
+            }
+            catch (Exception e)
+            {
+                PL.current.DisplayError(e.Message);
+            }
+            PL.current.DisplayDatabase();
+        }
+
+
+        public int searchStudent(string StudID)
+        {
+            {
+                try
+                {
+                    DataTable Table = GetStudents();
+                    for (int i = 0; i < Table.Rows.Count; i++)
+                    {
+                        if (Table.Rows[i]["StudentID"].ToString() == StudID)
+                        {
+                            return i;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    frmDatabase.current.DisplayError(e.Message);
+                }
+                return -1;
+            }
+
         }
 
         public enum TableChoice

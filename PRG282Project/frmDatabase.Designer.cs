@@ -41,7 +41,6 @@ namespace PRG282Project
             this.txtStudNumber = new System.Windows.Forms.TextBox();
             this.txtStudNames = new System.Windows.Forms.TextBox();
             this.gbStudFields = new System.Windows.Forms.GroupBox();
-            this.lbCodes = new System.Windows.Forms.ListBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.cbbGender = new System.Windows.Forms.ComboBox();
@@ -182,7 +181,7 @@ namespace PRG282Project
             // 
             // gbStudFields
             // 
-            this.gbStudFields.Controls.Add(this.lbCodes);
+            this.gbStudFields.Controls.Add(this.richTextBox1);
             this.gbStudFields.Controls.Add(this.txtAddress);
             this.gbStudFields.Controls.Add(this.txtPhone);
             this.gbStudFields.Controls.Add(this.cbbGender);
@@ -205,15 +204,6 @@ namespace PRG282Project
             this.gbStudFields.TabIndex = 1;
             this.gbStudFields.TabStop = false;
             this.gbStudFields.Text = "Student Information";
-            // 
-            // lbCodes
-            // 
-            this.lbCodes.FormattingEnabled = true;
-            this.lbCodes.ItemHeight = 16;
-            this.lbCodes.Location = new System.Drawing.Point(362, 111);
-            this.lbCodes.Name = "lbCodes";
-            this.lbCodes.Size = new System.Drawing.Size(129, 84);
-            this.lbCodes.TabIndex = 15;
             // 
             // txtAddress
             // 
@@ -298,6 +288,7 @@ namespace PRG282Project
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -628,7 +619,6 @@ namespace PRG282Project
         private System.Windows.Forms.TextBox txtStudNumber;
         private System.Windows.Forms.TextBox txtStudNames;
         private System.Windows.Forms.GroupBox gbStudFields;
-        private System.Windows.Forms.ListBox lbCodes;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.ComboBox cbbGender;

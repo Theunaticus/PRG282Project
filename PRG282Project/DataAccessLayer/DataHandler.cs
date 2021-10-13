@@ -15,7 +15,7 @@ namespace PRG282Project.DataAccessLayer
     class DataHandler
     {
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
-        string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
+        string ConnectionString = @"Data Source=LAPTOP-H72V6H51\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {
@@ -154,10 +154,51 @@ namespace PRG282Project.DataAccessLayer
             PL.current.DisplayDatabase();
         }
 
+
+        public int searchStudent(string StudID)
+        {
+            {
+                try
+                {
+                    DataTable Table = GetStudents();
+                    for (int i = 0; i < Table.Rows.Count; i++)
+                    {
+                        if (Table.Rows[i]["StudentID"].ToString() == StudID)
+                        {
+                            return i;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    frmDatabase.current.DisplayError(e.Message);
+                }
+                return -1;
+            }
+
+        }
+
         public enum TableChoice
         {
             tblStudents,
             tblModules,
+        }
+
+        public void deleteRecord(String StudentID)
+        {
+            string message = "delete from tblStudents where studentID = '"+StudentID+"'";
+            executecommand(message);
+        }
+
+        public void executecommand(String message)
+        {
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string Insert = message;
+            SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+            connection.Open();
+            InsertCMD.ExecuteNonQuery();
+            connection.Close();
+            PL.current.DisplaySuccess("command successfully executed!!!");
         }
     }
 }

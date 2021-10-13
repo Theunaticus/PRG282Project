@@ -294,5 +294,10 @@ namespace PRG282Project
                 //List Box Display?
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

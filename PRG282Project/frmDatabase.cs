@@ -27,11 +27,6 @@ namespace PRG282Project
             frmLogin.current.Close();
         }
 
-        private void frmDatabase_Load(object sender, EventArgs e)
-        {
-            current = this;
-        }
-
         private void frmDatabase_Shown(object sender, EventArgs e)
         {
             Showing = true;

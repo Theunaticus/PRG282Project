@@ -15,7 +15,7 @@ namespace PRG282Project.DataAccessLayer
     class DataHandler
     {
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
-        string ConnectionString = @"Data Source=DESKTOP-68BFB0T\PRG282SQL;Initial Catalog=PRG282Project;Integrated Security=True";
+        string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {
@@ -52,9 +52,12 @@ namespace PRG282Project.DataAccessLayer
             return Result;
         }
 
-        public  void    InsertRecord()
+        public  void    InsertRecord(RecordData Data)
         {
+            if (Data.GetType()==typeof(StudentData))
+            {
 
+            }
         }
 
         public enum TableChoice

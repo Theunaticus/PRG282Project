@@ -11,6 +11,7 @@ using PRG282Project.PresentationLayer;
 using PRG282Project.DataAccessLayer;
 using PRG282Project.ApplicationLayer;
 using PRG282Project.DataLayer;
+using PRG282Project.Properties;
 
 namespace PRG282Project
 {
@@ -49,6 +50,7 @@ namespace PRG282Project
         public void DisplayStudents()
         {
             dgvStudents.DataSource = DataHandler.current.GetStudents();
+            CreateGraphicsColumn();
         }
 
         public void DisplayModules()
@@ -260,6 +262,23 @@ namespace PRG282Project
         private void dgvModules_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DisplayModule(e.RowIndex);
+        }
+
+        private void CreateGraphicsColumn()
+        {
+            try
+            {
+                Icon Icon = new Icon(this.GetType(), AL.current.LastImageFile);
+                DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
+                iconColumn.Image = Icon.ToBitmap();
+                iconColumn.Name = "Tes";
+                iconColumn.HeaderText = "tickle";
+                dgvStudents.Columns.Insert(8, iconColumn);
+            }
+            catch (Exception e)
+            {
+                PL.current.DisplayError(e.Message);
+            }
         }
 
         void    DisplayModule   (int    Index)

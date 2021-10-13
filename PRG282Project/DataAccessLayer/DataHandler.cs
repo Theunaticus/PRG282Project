@@ -115,7 +115,6 @@ namespace PRG282Project.DataAccessLayer
                 {
                     StudentData NewData = (StudentData)Data;
                     SqlConnection connection = new SqlConnection(ConnectionString);
-                    string c = "','";
                     string Insert = @"UPDATE tblStudents SET ";//, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
                     Insert += "Name = '" + NewData.StName+"',";
                     Insert += "Surname = '" + NewData.Surname+"',";
@@ -136,7 +135,6 @@ namespace PRG282Project.DataAccessLayer
                 {
                     ModuleData NewData = (ModuleData)Data;
                     SqlConnection connection = new SqlConnection(ConnectionString);
-                    string c = "','";
                     string Insert = @"UPDATE Modules SET ";
                     Insert +=  "Name = '"+NewData.Name +"',";
                     Insert +=  "Description = '"+NewData.Description +"',";

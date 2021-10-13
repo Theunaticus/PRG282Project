@@ -15,10 +15,10 @@ namespace PRG282Project.DataAccessLayer
     class DataHandler
     {
         //armandt se rekenaar: LAPTOP-H72V6H51\SQLEXPRESS
-        //theuns se rekenaar: 
+        //theuns se rekenaar: Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
         //Francois se rekenaar: DESKTOP-M2MPA17\SQLEXPRESS
-        public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
-        string ConnectionString = @"Data Source=LAPTOP-H72V6H51\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
+        public static DataHandler current;
+        string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {
@@ -116,7 +116,7 @@ namespace PRG282Project.DataAccessLayer
                         PL.current.DisplayError("Record does not exist");
                         return;
                     }
-                    string Update = @"UPDATE tblStudents SET ";//, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
+                    string Update = @"UPDATE tblStudents SET ";
                     Update += "Name = '" + NewData.StName+"',";
                     Update += "Surname = '" + NewData.Surname+"',";
                     Update += "DOB = '" + NewData.DOB+"',";

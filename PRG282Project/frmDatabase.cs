@@ -44,7 +44,6 @@ namespace PRG282Project
         public void DisplayStudents()
         {
             dgvStudents.DataSource = DataHandler.current.GetStudents();
-            CreateGraphicsColumn();
         }
 
         public void DisplayModules()
@@ -259,23 +258,6 @@ namespace PRG282Project
             DisplayModule(e.RowIndex);
         }
 
-        private void CreateGraphicsColumn()
-        {
-            try
-            {
-                Icon Icon = new Icon(this.GetType(), AL.current.LastImageFile);
-                DataGridViewImageColumn iconColumn = new DataGridViewImageColumn();
-                iconColumn.Image = Icon.ToBitmap();
-                iconColumn.Name = "Tes";
-                iconColumn.HeaderText = "tickle";
-                dgvStudents.Columns.Insert(8, iconColumn);
-            }
-            catch (Exception e)
-            {
-                PL.current.DisplayError(e.Message);
-            }
-        }
-
         void    DisplayModule   (int    Index)
         {
             if (Index >= 0)
@@ -286,7 +268,6 @@ namespace PRG282Project
                 txtModName.Text = Row.Cells["Name"].Value.ToString();
                 txtModDesc.Text = " " + Row.Cells["Description"].Value.ToString();
                 txtModResources.Text = Row.Cells["Resources"].Value.ToString();
-                //List Box Display?
             }
         }
 

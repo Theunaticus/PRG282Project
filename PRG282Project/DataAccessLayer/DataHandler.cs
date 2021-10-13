@@ -14,6 +14,9 @@ namespace PRG282Project.DataAccessLayer
 {
     class DataHandler
     {
+        //armandt se rekenaar: LAPTOP-H72V6H51\SQLEXPRESS
+        //theuns se rekenaar: 
+        //Francois se rekenaar: DESKTOP-M2MPA17\SQLEXPRESS
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
         string ConnectionString = @"Data Source=DESKTOP-68BFB0T\PRG282SQL;Initial Catalog=PRG282Project;Integrated Security=True";
 
@@ -63,38 +66,35 @@ namespace PRG282Project.DataAccessLayer
 
         public  void    InsertRecord(RecordData Data)
         {
-            //Check if record exists
-            //!!!!!!!!!!!!!!!!!!!!!!!!
-            //
             try
             {
                 if (Data.GetType() == typeof(StudentData))
                 {
                     StudentData NewData = (StudentData)Data;
-                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    if (searchStudent(NewData.StNumber) == -1)
+                    {
+                        PL.current.DisplayError("Record does not exist");
+                        return;
+                    }
                     string c = "','";
                     string Insert = @"INSERT INTO tblStudents (Name, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
                     Insert += " Values ('" + NewData.StName + c + NewData.Surname + c + NewData.DOB + c + NewData.Gender + c + NewData.Phone + c + NewData.Address + c + NewData.ModuleCodes + c + NewData.StNumber + c + NewData.ImagePath;
                     Insert += "')";
-                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
-                    connection.Open();
-                    InsertCMD.ExecuteNonQuery();
-                    connection.Close();
-                    PL.current.DisplaySuccess("Record successfully inserted");
+                    executecommand(Insert);
                 }
                 if (Data.GetType()==typeof(ModuleData))
                 {
                     ModuleData NewData = (ModuleData)Data;
-                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    if (searchStudent(NewData.Code) == -1)
+                    {
+                        PL.current.DisplayError("Record does not exist");
+                        return;
+                    }
                     string c = "','";
                     string Insert = @"INSERT INTO Modules (Code, Name, Description, Resources)";
                     Insert += " Values ('" + NewData.Code + c + NewData.Name + c + NewData.Description + c + NewData.ResourceLink;
                     Insert += "')";
-                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
-                    connection.Open();
-                    InsertCMD.ExecuteNonQuery();
-                    connection.Close();
-                    PL.current.DisplaySuccess("Record successfully inserted");
+                    executecommand(Insert);
                 }
             }
             catch (Exception e)
@@ -106,45 +106,42 @@ namespace PRG282Project.DataAccessLayer
 
         public void UpdateRecord(RecordData Data)
         {
-            //Check if record exists
-            //!!!!!!!!!!!!!!!!!!!!!!!!
-            //
             try
             {
                 if (Data.GetType() == typeof(StudentData))
                 {
                     StudentData NewData = (StudentData)Data;
-                    SqlConnection connection = new SqlConnection(ConnectionString);
-                    string Insert = @"UPDATE tblStudents SET ";//, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
-                    Insert += "Name = '" + NewData.StName+"',";
-                    Insert += "Surname = '" + NewData.Surname+"',";
-                    Insert += "DOB = '" + NewData.DOB+"',";
-                    Insert += "Gender = '" + NewData.Gender+"',";
-                    Insert += "Phone = '" + NewData.Phone+"',";
-                    Insert += "Address = '" + NewData.Address+"',";
-                    Insert += "[Module Codes] = '" + NewData.ModuleCodes+"',";
-                    Insert += "[Student Picture] = '" + NewData.ImagePath+"'";
-                    Insert  += " Where StudentID = '" + NewData.StNumber+"'";
-                    SqlCommand UpdateCMD = new SqlCommand(Insert, connection);
-                    connection.Open();
-                    UpdateCMD.ExecuteNonQuery();
-                    connection.Close();
-                    PL.current.DisplaySuccess("Record successfully updated");
+                    if (searchStudent(NewData.StNumber)==-1)
+                    {
+                        PL.current.DisplayError("Record does not exist");
+                        return;
+                    }
+                    string Update = @"UPDATE tblStudents SET ";//, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
+                    Update += "Name = '" + NewData.StName+"',";
+                    Update += "Surname = '" + NewData.Surname+"',";
+                    Update += "DOB = '" + NewData.DOB+"',";
+                    Update += "Gender = '" + NewData.Gender+"',";
+                    Update += "Phone = '" + NewData.Phone+"',";
+                    Update += "Address = '" + NewData.Address+"',";
+                    Update += "[Module Codes] = '" + NewData.ModuleCodes+"',";
+                    Update += "[Student Picture] = '" + NewData.ImagePath+"'";
+                    Update += " Where StudentID = '" + NewData.StNumber+"'";
+                    executecommand(Update);
                 }
                 if (Data.GetType() == typeof(ModuleData))
                 {
                     ModuleData NewData = (ModuleData)Data;
-                    SqlConnection connection = new SqlConnection(ConnectionString);
-                    string Insert = @"UPDATE Modules SET ";
-                    Insert +=  "Name = '"+NewData.Name +"',";
-                    Insert +=  "Description = '"+NewData.Description +"',";
-                    Insert +=  "Resources = '"+NewData.ResourceLink+"'";
-                    Insert += " Where Code = '" + NewData.Code + "'";
-                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
-                    connection.Open();
-                    InsertCMD.ExecuteNonQuery();
-                    connection.Close();
-                    PL.current.DisplaySuccess("Record successfully inserted");
+                    if (searchStudent(NewData.Code) == -1)
+                    {
+                        PL.current.DisplayError("Record does not exist");
+                        return;
+                    }
+                    string Update = @"UPDATE Modules SET ";
+                    Update +=  "Name = '"+NewData.Name +"',";
+                    Update +=  "Description = '"+NewData.Description +"',";
+                    Update +=  "Resources = '"+NewData.ResourceLink+"'";
+                    Update += " Where Code = '" + NewData.Code + "'";
+                    executecommand(Update);
                 }
             }
             catch (Exception e)
@@ -178,27 +175,30 @@ namespace PRG282Project.DataAccessLayer
 
         }
 
-        public enum TableChoice
+        public void deleteRecord(String StudentID, string module, string ID)
         {
-            tblStudents,
-            tblModules,
-        }
-
-        public void deleteRecord(String StudentID)
-        {
-            string message = "delete from tblStudents where studentID = '"+StudentID+"'";
+            string message = "delete from "+ module +" where "+ ID +" = '"+StudentID+"'";
             executecommand(message);
         }
 
         public void executecommand(String message)
         {
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            string Insert = message;
-            SqlCommand InsertCMD = new SqlCommand(Insert, connection);
-            connection.Open();
-            InsertCMD.ExecuteNonQuery();
-            connection.Close();
-            PL.current.DisplaySuccess("command successfully executed!!!");
+            try
+            {
+                SqlConnection connection = new SqlConnection(ConnectionString);
+                string Insert = message;
+                SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                connection.Open();
+                InsertCMD.ExecuteNonQuery();
+                connection.Close();
+                PL.current.DisplaySuccess("command successfully executed!!!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("problem, uuhm... : " + e);
+                throw;
+            }
+           
         }
     }
 }

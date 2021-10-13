@@ -88,8 +88,11 @@ namespace PRG282Project
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudents.Location = new System.Drawing.Point(16, 53);
             this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.RowHeadersVisible = false;
+            this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudents.Size = new System.Drawing.Size(511, 237);
             this.dgvStudents.TabIndex = 0;
+            this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
             // lblStudNumber
             // 
@@ -260,6 +263,7 @@ namespace PRG282Project
             this.btnStudImage.TabIndex = 10;
             this.btnStudImage.Text = "Add";
             this.btnStudImage.UseVisualStyleBackColor = false;
+            this.btnStudImage.Click += new System.EventHandler(this.btnStudImage_Click);
             // 
             // openImage
             // 
@@ -352,6 +356,7 @@ namespace PRG282Project
             this.btnCreate.TabIndex = 0;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // lblStudents
             // 

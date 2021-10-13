@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PRG282Project.PresentationLayer;
 using PRG282Project.DataAccessLayer;
+using PRG282Project.ApplicationLayer;
+using PRG282Project.DataLayer;
 
 namespace PRG282Project
 {
@@ -20,10 +22,12 @@ namespace PRG282Project
         {
             InitializeComponent();
             current = this;
+            Showing = true;
         }
 
         private void frmDatabase_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Showing = false;
             frmLogin.current.Close();
         }
 
@@ -50,6 +54,89 @@ namespace PRG282Project
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnStudImage_Click(object sender, EventArgs e)
+        {
+            PL.current.ShowExplorer();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (ValidateStudent()==-1)
+            {
+                if (AL.current.ValidImage())
+                {
+                    if (AL.current.ValidNames(txtStudNames.Text))
+                    {
+                        string Number = txtStudNumber.Text;
+                        string Name = AL.current.GetName(txtStudNames.Text);
+                        string Surname = AL.current.GetSurname(txtStudNames.Text);
+                        string DOB = dtpDOB.Value.ToString();
+                        string Gender = cbbGender.SelectedItem.ToString();
+                        string Phone = txtPhone.Text;
+                        string Address = txtAddress.Text;
+                        string Codes = lbCodes.Text;
+                        string Path = AL.current.LastImageFile;
+                        StudentData Data = new StudentData(Number,Name,Surname,DOB,Gender,Phone,Address,Codes,Path);
+                        AL.current.CreateRecord(Data);
+                    }
+                    else
+                    {
+                        PL.current.DisplayError("Please enter a valid name and surname");
+                    }
+                }
+                else
+                {
+                    PL.current.DisplayError("Please choose a valid student picture");
+                }
+            }
+            else
+            {
+                PL.current.DisplayError("This input does not contain a valid value");
+            }
+        }
+
+        int ValidateStudent()
+        {
+            List<bool> Flags = new List<bool>();
+            Flags.Add(AL.current.ValidateComponent(txtStudNumber));
+            Flags.Add(AL.current.ValidateComponent(txtStudNames));
+            //Flags.Add(AL.current.ValidateComponent(dtpDOB));
+            Flags.Add(AL.current.ValidateComponent(cbbGender));
+            Flags.Add(AL.current.ValidateComponent(txtPhone));
+            //Flags.Add(AL.current.ValidateComponent(lbCodes));
+
+            for (int i = 0; i < Flags.Count; i++)
+            {
+                if (Flags[i]==false)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DisplayRow(e.RowIndex);
+        }
+
+        void    DisplayRow  (int    Index)
+        {
+            if (Index>=0)
+            {
+                DataGridViewRow Row = dgvStudents.Rows[Index];
+
+                txtStudNumber.Text = Row.Cells["StudentID"].Value.ToString();
+                txtStudNames.Text = Row.Cells["Name"].Value.ToString();
+                txtStudNames.Text += Row.Cells["Surname"].Value.ToString();
+                cbbGender.Text = Row.Cells["Gender"].Value.ToString();
+                txtPhone.Text = Row.Cells["Phone"].Value.ToString();
+                txtAddress.Text = Row.Cells["Address"].Value.ToString();
+                //List Box Display?
+            }
         }
     }
 }

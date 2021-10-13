@@ -48,7 +48,7 @@ namespace PRG282Project
         
         public  void DisplayStudents    ()
         {
-            dgvStudents.DataSource = DataHandler.current.GetStudents();
+            dgvStudent.DataSource = DataHandler.current.GetStudents();
         }
     }
 }

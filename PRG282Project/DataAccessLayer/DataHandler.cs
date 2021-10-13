@@ -14,6 +14,9 @@ namespace PRG282Project.DataAccessLayer
 {
     class DataHandler
     {
+        //armandt se rekenaar:
+        //theuns se rekenaar
+        //Francois se rekenaar
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
         string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
@@ -192,13 +195,22 @@ namespace PRG282Project.DataAccessLayer
 
         public void executecommand(String message)
         {
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            string Insert = message;
-            SqlCommand InsertCMD = new SqlCommand(Insert, connection);
-            connection.Open();
-            InsertCMD.ExecuteNonQuery();
-            connection.Close();
-            PL.current.DisplaySuccess("command successfully executed!!!");
+            try
+            {
+                SqlConnection connection = new SqlConnection(ConnectionString);
+                string Insert = message;
+                SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                connection.Open();
+                InsertCMD.ExecuteNonQuery();
+                connection.Close();
+                PL.current.DisplaySuccess("command successfully executed!!!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("problem, uuhm... : " + e);
+                throw;
+            }
+           
         }
     }
 }

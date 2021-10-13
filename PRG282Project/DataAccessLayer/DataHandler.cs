@@ -60,6 +60,30 @@ namespace PRG282Project.DataAccessLayer
             }
         }
 
+
+        public string searchStudent(int StudID)
+        {
+            {
+                try
+                {
+                    DataTable Table = GetStudents();
+                    for (int i = 0; i < Table.Rows.Count; i++)
+                    {
+                        if (Table.Rows[i]["StudentID"].ToString() == StudID)
+                        {
+                            return i;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    DBForm.current.DisplayError(e.Message);
+                }
+                return -1;
+            }
+
+        }
+
         public enum TableChoice
         {
             tblStudents,

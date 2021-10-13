@@ -15,7 +15,7 @@ namespace PRG282Project.DataAccessLayer
     class DataHandler
     {
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
-        string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
+        string ConnectionString = @"Data Source=DESKTOP-68BFB0T\PRG282SQL;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {
@@ -118,7 +118,7 @@ namespace PRG282Project.DataAccessLayer
         }
 
 
-        public string searchStudent(int StudID)
+        public int searchStudent(string StudID)
         {
             {
                 try
@@ -134,7 +134,7 @@ namespace PRG282Project.DataAccessLayer
                 }
                 catch (Exception e)
                 {
-                    DBForm.current.DisplayError(e.Message);
+                    frmDatabase.current.DisplayError(e.Message);
                 }
                 return -1;
             }

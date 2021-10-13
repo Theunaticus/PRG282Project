@@ -41,7 +41,6 @@ namespace PRG282Project
             this.txtStudNumber = new System.Windows.Forms.TextBox();
             this.txtStudNames = new System.Windows.Forms.TextBox();
             this.gbStudFields = new System.Windows.Forms.GroupBox();
-            this.lbCodes = new System.Windows.Forms.ListBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.cbbGender = new System.Windows.Forms.ComboBox();
@@ -66,7 +65,6 @@ namespace PRG282Project
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbModFields = new System.Windows.Forms.GroupBox();
-            this.lbResources = new System.Windows.Forms.ListBox();
             this.lblResources = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -75,6 +73,8 @@ namespace PRG282Project
             this.lblModName = new System.Windows.Forms.Label();
             this.lblModCode = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtbModResources = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.gbStudFields.SuspendLayout();
             this.gbStudControls.SuspendLayout();
@@ -182,7 +182,7 @@ namespace PRG282Project
             // 
             // gbStudFields
             // 
-            this.gbStudFields.Controls.Add(this.lbCodes);
+            this.gbStudFields.Controls.Add(this.richTextBox1);
             this.gbStudFields.Controls.Add(this.txtAddress);
             this.gbStudFields.Controls.Add(this.txtPhone);
             this.gbStudFields.Controls.Add(this.cbbGender);
@@ -205,15 +205,6 @@ namespace PRG282Project
             this.gbStudFields.TabIndex = 1;
             this.gbStudFields.TabStop = false;
             this.gbStudFields.Text = "Student Information";
-            // 
-            // lbCodes
-            // 
-            this.lbCodes.FormattingEnabled = true;
-            this.lbCodes.ItemHeight = 16;
-            this.lbCodes.Location = new System.Drawing.Point(362, 111);
-            this.lbCodes.Name = "lbCodes";
-            this.lbCodes.Size = new System.Drawing.Size(129, 84);
-            this.lbCodes.TabIndex = 15;
             // 
             // txtAddress
             // 
@@ -298,6 +289,7 @@ namespace PRG282Project
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -479,7 +471,7 @@ namespace PRG282Project
             // 
             // gbModFields
             // 
-            this.gbModFields.Controls.Add(this.lbResources);
+            this.gbModFields.Controls.Add(this.rtbModResources);
             this.gbModFields.Controls.Add(this.lblResources);
             this.gbModFields.Controls.Add(this.textBox2);
             this.gbModFields.Controls.Add(this.textBox4);
@@ -494,15 +486,6 @@ namespace PRG282Project
             this.gbModFields.TabIndex = 7;
             this.gbModFields.TabStop = false;
             this.gbModFields.Text = "Module Information";
-            // 
-            // lbResources
-            // 
-            this.lbResources.FormattingEnabled = true;
-            this.lbResources.ItemHeight = 16;
-            this.lbResources.Location = new System.Drawing.Point(161, 133);
-            this.lbResources.Name = "lbResources";
-            this.lbResources.Size = new System.Drawing.Size(207, 68);
-            this.lbResources.TabIndex = 16;
             // 
             // lblResources
             // 
@@ -576,6 +559,22 @@ namespace PRG282Project
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(362, 116);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(129, 96);
+            this.richTextBox1.TabIndex = 15;
+            this.richTextBox1.Text = "";
+            // 
+            // rtbModResources
+            // 
+            this.rtbModResources.Location = new System.Drawing.Point(161, 129);
+            this.rtbModResources.Name = "rtbModResources";
+            this.rtbModResources.Size = new System.Drawing.Size(207, 83);
+            this.rtbModResources.TabIndex = 15;
+            this.rtbModResources.Text = "";
+            // 
             // frmDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -625,7 +624,6 @@ namespace PRG282Project
         private System.Windows.Forms.TextBox txtStudNumber;
         private System.Windows.Forms.TextBox txtStudNames;
         private System.Windows.Forms.GroupBox gbStudFields;
-        private System.Windows.Forms.ListBox lbCodes;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.ComboBox cbbGender;
@@ -650,7 +648,6 @@ namespace PRG282Project
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox gbModFields;
-        private System.Windows.Forms.ListBox lbResources;
         private System.Windows.Forms.Label lblResources;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox4;
@@ -659,5 +656,7 @@ namespace PRG282Project
         private System.Windows.Forms.Label lblModName;
         private System.Windows.Forms.Label lblModCode;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtbModResources;
     }
 }

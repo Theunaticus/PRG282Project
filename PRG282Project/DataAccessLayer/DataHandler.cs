@@ -15,7 +15,7 @@ namespace PRG282Project.DataAccessLayer
     class DataHandler
     {
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
-        string ConnectionString = @"Data Source=DESKTOP-68BFB0T\PRG282SQL;Initial Catalog=PRG282Project;Integrated Security=True";
+        string ConnectionString = @"Data Source=LAPTOP-H72V6H51\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {
@@ -81,6 +81,23 @@ namespace PRG282Project.DataAccessLayer
         {
             tblStudents,
             tblModules,
+        }
+
+        public void deleteRecord(String StudentID)
+        {
+            string message = "delete from tblStudents where studentID = '"+StudentID+"'";
+            executecommand(message);
+        }
+
+        public void executecommand(String message)
+        {
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            string Insert = message;
+            SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+            connection.Open();
+            InsertCMD.ExecuteNonQuery();
+            connection.Close();
+            PL.current.DisplaySuccess("command successfully executed!!!");
         }
     }
 }

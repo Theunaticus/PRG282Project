@@ -102,9 +102,17 @@ namespace PRG282Project
 
         void    Login   ()
         {
-            frmDatabase DatabaseForm = new frmDatabase();
-            DatabaseForm.Show();
-            HideMe();
+            if (DataHandler.current.ConnectDatabase())
+            {
+                frmDatabase DatabaseForm = new frmDatabase();
+                DatabaseForm.Show();
+                PL.current.DisplayDatabase();
+                HideMe();
+            }
+            else
+            {
+                DisplayError("Database could not be connected");
+            }
         }
 
         private void btnCreateUser_Click(object sender, EventArgs e)
@@ -132,8 +140,6 @@ namespace PRG282Project
             {
                 DisplayError("Please enter a valid Username");
             }
-            var data = new DataHandler();
-            data.ConnectDatabase();
         }
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)

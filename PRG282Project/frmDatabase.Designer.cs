@@ -29,20 +29,36 @@ namespace PRG282Project
         /// </summary>
         private void InitializeComponent()
         {
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dgvStudents
+            // 
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.Location = new System.Drawing.Point(12, 74);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.Size = new System.Drawing.Size(758, 276);
+            this.dgvStudents.TabIndex = 0;
             // 
             // frmDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1043, 593);
+            this.Controls.Add(this.dgvStudents);
             this.Name = "frmDatabase";
             this.Text = "frmDatabase";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDatabase_FormClosed);
+            this.Load += new System.EventHandler(this.frmDatabase_Load);
+            this.Shown += new System.EventHandler(this.frmDatabase_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvStudents;
     }
 }

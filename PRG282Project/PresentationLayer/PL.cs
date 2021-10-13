@@ -22,6 +22,15 @@ namespace PRG282Project.PresentationLayer
                 frmLogin.current.DisplayError(Message);
                 return;
             }
+            if (frmDatabase.current.Showing)
+            {
+                frmDatabase.current.DisplayError(Message);
+            }
+        }
+
+        public  void DisplayDatabase    ()
+        {
+            frmDatabase.current.DisplayStudents();
         }
     }
 }

@@ -54,7 +54,6 @@ namespace PRG282Project
             this.lblSearch = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnRead = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.lblStudents = new System.Windows.Forms.Label();
             this.dgvModules = new System.Windows.Forms.DataGridView();
@@ -65,7 +64,6 @@ namespace PRG282Project
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbModFields = new System.Windows.Forms.GroupBox();
             this.lbResources = new System.Windows.Forms.ListBox();
@@ -274,7 +272,6 @@ namespace PRG282Project
             this.gbStudControls.Controls.Add(this.lblSearch);
             this.gbStudControls.Controls.Add(this.btnDelete);
             this.gbStudControls.Controls.Add(this.btnUpdate);
-            this.gbStudControls.Controls.Add(this.btnRead);
             this.gbStudControls.Controls.Add(this.btnCreate);
             this.gbStudControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbStudControls.Location = new System.Drawing.Point(16, 530);
@@ -342,20 +339,6 @@ namespace PRG282Project
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             // 
-            // btnRead
-            // 
-            this.btnRead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(198)))), ((int)(((byte)(35)))));
-            this.btnRead.FlatAppearance.BorderSize = 0;
-            this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRead.ForeColor = System.Drawing.Color.White;
-            this.btnRead.Location = new System.Drawing.Point(124, 31);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(94, 28);
-            this.btnRead.TabIndex = 1;
-            this.btnRead.Text = "Read";
-            this.btnRead.UseVisualStyleBackColor = false;
-            // 
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(61)))), ((int)(((byte)(58)))));
@@ -365,7 +348,7 @@ namespace PRG282Project
             this.btnCreate.ForeColor = System.Drawing.Color.White;
             this.btnCreate.Location = new System.Drawing.Point(19, 31);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(94, 28);
+            this.btnCreate.Size = new System.Drawing.Size(199, 28);
             this.btnCreate.TabIndex = 0;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = false;
@@ -407,7 +390,6 @@ namespace PRG282Project
             this.gbModControls.Controls.Add(this.label1);
             this.gbModControls.Controls.Add(this.button2);
             this.gbModControls.Controls.Add(this.button3);
-            this.gbModControls.Controls.Add(this.button4);
             this.gbModControls.Controls.Add(this.button5);
             this.gbModControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbModControls.Location = new System.Drawing.Point(537, 530);
@@ -470,35 +452,22 @@ namespace PRG282Project
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(19, 74);
             this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.button3.Size = new System.Drawing.Size(94, 28);
             this.button3.TabIndex = 2;
             this.button3.Text = "Update";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(198)))), ((int)(((byte)(35)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(124, 31);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 28);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Read";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(61)))), ((int)(((byte)(58)))));
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(198)))), ((int)(((byte)(35)))));
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(19, 31);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(94, 28);
+            this.button5.Size = new System.Drawing.Size(199, 28);
             this.button5.TabIndex = 0;
             this.button5.Text = "Create";
             this.button5.UseVisualStyleBackColor = false;
@@ -661,7 +630,6 @@ namespace PRG282Project
         private System.Windows.Forms.GroupBox gbStudControls;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label lblStudents;
         private System.Windows.Forms.Button btnSearch;
@@ -675,7 +643,6 @@ namespace PRG282Project
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox gbModFields;
         private System.Windows.Forms.ListBox lbResources;

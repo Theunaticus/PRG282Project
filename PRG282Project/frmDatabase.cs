@@ -45,10 +45,15 @@ namespace PRG282Project
         {
             MessageBox.Show(Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        
+
         public  void DisplayStudents    ()
         {
             dgvStudents.DataSource = DataHandler.current.GetStudents();
+        }
+
+        public void DisplayModules()
+        {
+            dgvModules.DataSource = DataHandler.current.GetModules();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -80,6 +85,7 @@ namespace PRG282Project
                         string Path = AL.current.LastImageFile;
                         StudentData Data = new StudentData(Number,Name,Surname,DOB,Gender,Phone,Address,Codes,Path);
                         AL.current.CreateRecord(Data);
+                        ClearStudents();
                     }
                     else
                     {
@@ -97,6 +103,11 @@ namespace PRG282Project
             }
         }
 
+        void ClearStudents()
+        {
+            txtStudNumber.Clear();
+            txtStudNames.Clear();
+        }
         int ValidateStudent()
         {
             List<bool> Flags = new List<bool>();
@@ -136,6 +147,43 @@ namespace PRG282Project
                 txtPhone.Text = Row.Cells["Phone"].Value.ToString();
                 txtAddress.Text = Row.Cells["Address"].Value.ToString();
                 //List Box Display?
+            }
+        }
+
+        int ValidateModule()
+        {
+            List<bool> Flags = new List<bool>();
+            Flags.Add(AL.current.ValidateComponent(txtModCode));
+            Flags.Add(AL.current.ValidateComponent(txtModName));
+            Flags.Add(AL.current.ValidateComponent(txtModDesc));
+            Flags.Add(AL.current.ValidateComponent(txtModResources));
+
+            for (int i = 0; i < Flags.Count; i++)
+            {
+                if (Flags[i] == false)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (ValidateModule() == -1)
+            {
+                string Code = txtModCode.Text;
+                string Name = txtModName.Text;
+                string Desc = txtModDesc.Text;
+                string Resc = txtModResources.Text;
+
+                ModuleData Data = new ModuleData(Code, Name, Desc, Resc);
+                AL.current.CreateRecord(Data);
+            }
+            else
+            {
+                PL.current.DisplayError("This input does not contain a valid value");
             }
         }
     }

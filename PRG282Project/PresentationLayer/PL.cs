@@ -34,6 +34,7 @@ namespace PRG282Project.PresentationLayer
         public  void DisplayDatabase    ()
         {
             frmDatabase.current.DisplayStudents();
+            frmDatabase.current.DisplayModules();
         }
 
         public  void DisplaySuccess(string Message)

@@ -297,7 +297,24 @@ namespace PRG282Project
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-           
+            int rowIndex = -1;
+            if (DataHandler.current.searchStudent(txtSearch.Text) != -1)
+            {
+                foreach (DataGridViewRow row in dgvStudents.Rows)
+                {
+                    if (row.Cells[1].Value != null)
+                    {
+                        if (row.Cells[1].Value.ToString().Equals(txtSearch.Text))
+                        {
+                            DisplayRow(row.Index);
+                            break;
+                        }
+                    }
+                    
+                }
+            }
+
+
         }
     }
 }

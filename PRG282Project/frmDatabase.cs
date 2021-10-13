@@ -294,5 +294,17 @@ namespace PRG282Project
         {
            
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var data = new DataHandler();
+            data.deleteRecord(txtStudNumber.Text, "tblStudents", "studentID");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var data = new DataHandler();
+            data.deleteRecord(txtModCode.Text, "Modules", "Code");
+        }
     }
 }

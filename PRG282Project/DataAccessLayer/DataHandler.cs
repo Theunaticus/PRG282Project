@@ -14,11 +14,11 @@ namespace PRG282Project.DataAccessLayer
 {
     class DataHandler
     {
-        //armandt se rekenaar:
-        //theuns se rekenaar
-        //Francois se rekenaar
+        //armandt se rekenaar: LAPTOP-H72V6H51\SQLEXPRESS
+        //theuns se rekenaar: 
+        //Francois se rekenaar: DESKTOP-M2MPA17\SQLEXPRESS
         public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
-        string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
+        string ConnectionString = @"Data Source=LAPTOP-H72V6H51\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
         public bool ConnectDatabase()
         {
@@ -175,9 +175,9 @@ namespace PRG282Project.DataAccessLayer
 
         }
 
-        public void deleteRecord(String StudentID)
+        public void deleteRecord(String StudentID, string module, string ID)
         {
-            string message = "delete from tblStudents where studentID = '"+StudentID+"'";
+            string message = "delete from "+ module +" where "+ ID +" = '"+StudentID+"'";
             executecommand(message);
         }
 

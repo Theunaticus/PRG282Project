@@ -300,7 +300,7 @@ namespace PRG282Project
             int rowIndex = DataHandler.current.searchModule(textBox1.Text);
             if (rowIndex != -1)
             {
-                DisplayRow(rowIndex);
+                DisplayModule(rowIndex);
                 dgvModules.ClearSelection();
                 dgvModules.Rows[rowIndex].Selected = true;
             }

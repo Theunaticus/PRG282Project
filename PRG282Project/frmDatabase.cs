@@ -52,5 +52,9 @@ namespace PRG282Project
             dgvStudents.DataSource = DataHandler.current.GetStudents();
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

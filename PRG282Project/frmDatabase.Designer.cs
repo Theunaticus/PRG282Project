@@ -66,15 +66,14 @@ namespace PRG282Project
             this.button5 = new System.Windows.Forms.Button();
             this.gbModFields = new System.Windows.Forms.GroupBox();
             this.lblResources = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtModDesc = new System.Windows.Forms.TextBox();
+            this.txtModName = new System.Windows.Forms.TextBox();
             this.txtModCode = new System.Windows.Forms.TextBox();
             this.lblModDesc = new System.Windows.Forms.Label();
             this.lblModName = new System.Windows.Forms.Label();
             this.lblModCode = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.rtbModResources = new System.Windows.Forms.RichTextBox();
+            this.txtModResources = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.gbStudFields.SuspendLayout();
             this.gbStudControls.SuspendLayout();
@@ -334,6 +333,7 @@ namespace PRG282Project
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCreate
             // 
@@ -366,8 +366,10 @@ namespace PRG282Project
             this.dgvModules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvModules.Location = new System.Drawing.Point(537, 53);
             this.dgvModules.Name = "dgvModules";
+            this.dgvModules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvModules.Size = new System.Drawing.Size(387, 237);
             this.dgvModules.TabIndex = 4;
+            this.dgvModules.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModules_CellContentClick);
             // 
             // lblMods
             // 
@@ -454,6 +456,7 @@ namespace PRG282Project
             this.button3.TabIndex = 2;
             this.button3.Text = "Update";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button5
             // 
@@ -468,13 +471,14 @@ namespace PRG282Project
             this.button5.TabIndex = 0;
             this.button5.Text = "Create";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // gbModFields
             // 
-            this.gbModFields.Controls.Add(this.rtbModResources);
+            this.gbModFields.Controls.Add(this.txtModResources);
             this.gbModFields.Controls.Add(this.lblResources);
-            this.gbModFields.Controls.Add(this.textBox2);
-            this.gbModFields.Controls.Add(this.textBox4);
+            this.gbModFields.Controls.Add(this.txtModDesc);
+            this.gbModFields.Controls.Add(this.txtModName);
             this.gbModFields.Controls.Add(this.txtModCode);
             this.gbModFields.Controls.Add(this.lblModDesc);
             this.gbModFields.Controls.Add(this.lblModName);
@@ -496,19 +500,19 @@ namespace PRG282Project
             this.lblResources.TabIndex = 14;
             this.lblResources.Text = "Module Resources:";
             // 
-            // textBox2
+            // txtModDesc
             // 
-            this.textBox2.Location = new System.Drawing.Point(161, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(207, 22);
-            this.textBox2.TabIndex = 13;
+            this.txtModDesc.Location = new System.Drawing.Point(161, 101);
+            this.txtModDesc.Name = "txtModDesc";
+            this.txtModDesc.Size = new System.Drawing.Size(207, 22);
+            this.txtModDesc.TabIndex = 13;
             // 
-            // textBox4
+            // txtModName
             // 
-            this.textBox4.Location = new System.Drawing.Point(161, 64);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(164, 22);
-            this.textBox4.TabIndex = 9;
+            this.txtModName.Location = new System.Drawing.Point(161, 64);
+            this.txtModName.Name = "txtModName";
+            this.txtModName.Size = new System.Drawing.Size(164, 22);
+            this.txtModName.TabIndex = 9;
             // 
             // txtModCode
             // 
@@ -559,21 +563,12 @@ namespace PRG282Project
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // richTextBox1
+            // txtModResources
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(362, 116);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(129, 96);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
-            // 
-            // rtbModResources
-            // 
-            this.rtbModResources.Location = new System.Drawing.Point(161, 129);
-            this.rtbModResources.Name = "rtbModResources";
-            this.rtbModResources.Size = new System.Drawing.Size(207, 83);
-            this.rtbModResources.TabIndex = 15;
-            this.rtbModResources.Text = "";
+            this.txtModResources.Location = new System.Drawing.Point(161, 139);
+            this.txtModResources.Name = "txtModResources";
+            this.txtModResources.Size = new System.Drawing.Size(207, 22);
+            this.txtModResources.TabIndex = 15;
             // 
             // frmDatabase
             // 
@@ -649,14 +644,13 @@ namespace PRG282Project
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox gbModFields;
         private System.Windows.Forms.Label lblResources;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtModDesc;
+        private System.Windows.Forms.TextBox txtModName;
         private System.Windows.Forms.TextBox txtModCode;
         private System.Windows.Forms.Label lblModDesc;
         private System.Windows.Forms.Label lblModName;
         private System.Windows.Forms.Label lblModCode;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox rtbModResources;
+        private System.Windows.Forms.TextBox txtModResources;
     }
 }

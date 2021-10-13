@@ -52,6 +52,15 @@ namespace PRG282Project.DataAccessLayer
             return Result;
         }
 
+        public DataTable GetModules()
+        {
+            string Query = @"SELECT * FROM Modules";
+            SqlDataAdapter DA = new SqlDataAdapter(Query, ConnectionString);
+            DataTable Result = new DataTable();
+            DA.Fill(Result);
+            return Result;
+        }
+
         public  void    InsertRecord(RecordData Data)
         {
             //Check if record exists
@@ -66,6 +75,20 @@ namespace PRG282Project.DataAccessLayer
                     string c = "','";
                     string Insert = @"INSERT INTO tblStudents (Name, Surname, DOB, Gender, Phone, Address, [Module Codes],StudentID, [Student Picture])";
                     Insert += " Values ('" + NewData.StName + c + NewData.Surname + c + NewData.DOB + c + NewData.Gender + c + NewData.Phone + c + NewData.Address + c + NewData.ModuleCodes + c + NewData.StNumber + c + NewData.ImagePath;
+                    Insert += "')";
+                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                    connection.Open();
+                    InsertCMD.ExecuteNonQuery();
+                    connection.Close();
+                    PL.current.DisplaySuccess("Record successfully inserted");
+                }
+                if (Data.GetType()==typeof(ModuleData))
+                {
+                    ModuleData NewData = (ModuleData)Data;
+                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    string c = "','";
+                    string Insert = @"INSERT INTO Modules (Code, Name, Description, Resources)";
+                    Insert += " Values ('" + NewData.Code + c + NewData.Name + c + NewData.Description + c + NewData.ResourceLink;
                     Insert += "')";
                     SqlCommand InsertCMD = new SqlCommand(Insert, connection);
                     connection.Open();
@@ -101,13 +124,29 @@ namespace PRG282Project.DataAccessLayer
                     Insert += "Phone = '" + NewData.Phone+"',";
                     Insert += "Address = '" + NewData.Address+"',";
                     Insert += "[Module Codes] = '" + NewData.ModuleCodes+"',";
-                    Insert += "[Student Picture] = '" + NewData.ImagePath;
-                    Insert  += "Where StudentID = '" + NewData.StNumber+"',";
+                    Insert += "[Student Picture] = '" + NewData.ImagePath+"'";
+                    Insert  += " Where StudentID = '" + NewData.StNumber+"'";
                     SqlCommand UpdateCMD = new SqlCommand(Insert, connection);
                     connection.Open();
                     UpdateCMD.ExecuteNonQuery();
                     connection.Close();
                     PL.current.DisplaySuccess("Record successfully updated");
+                }
+                if (Data.GetType() == typeof(ModuleData))
+                {
+                    ModuleData NewData = (ModuleData)Data;
+                    SqlConnection connection = new SqlConnection(ConnectionString);
+                    string c = "','";
+                    string Insert = @"UPDATE Modules SET ";
+                    Insert +=  "Name = '"+NewData.Name +"',";
+                    Insert +=  "Description = '"+NewData.Description +"',";
+                    Insert +=  "Resources = '"+NewData.ResourceLink+"'";
+                    Insert += " Where Code = '" + NewData.Code + "'";
+                    SqlCommand InsertCMD = new SqlCommand(Insert, connection);
+                    connection.Open();
+                    InsertCMD.ExecuteNonQuery();
+                    connection.Close();
+                    PL.current.DisplaySuccess("Record successfully inserted");
                 }
             }
             catch (Exception e)

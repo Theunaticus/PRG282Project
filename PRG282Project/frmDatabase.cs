@@ -105,7 +105,7 @@ namespace PRG282Project
             //Flags.Add(AL.current.ValidateComponent(dtpDOB));
             Flags.Add(AL.current.ValidateComponent(cbbGender));
             Flags.Add(AL.current.ValidateComponent(txtPhone));
-            Flags.Add(AL.current.ValidateComponent(lbCodes));
+            //Flags.Add(AL.current.ValidateComponent(lbCodes));
 
             for (int i = 0; i < Flags.Count; i++)
             {
@@ -116,6 +116,27 @@ namespace PRG282Project
             }
 
             return -1;
+        }
+
+        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DisplayRow(e.RowIndex);
+        }
+
+        void    DisplayRow  (int    Index)
+        {
+            if (Index>=0)
+            {
+                DataGridViewRow Row = dgvStudents.Rows[Index];
+
+                txtStudNumber.Text = Row.Cells["StudentID"].Value.ToString();
+                txtStudNames.Text = Row.Cells["Name"].Value.ToString();
+                txtStudNames.Text += Row.Cells["Surname"].Value.ToString();
+                cbbGender.Text = Row.Cells["Gender"].Value.ToString();
+                txtPhone.Text = Row.Cells["Phone"].Value.ToString();
+                txtAddress.Text = Row.Cells["Address"].Value.ToString();
+                //List Box Display?
+            }
         }
     }
 }

@@ -139,7 +139,7 @@ namespace PRG282Project.ApplicationLayer
         public  string  GetSurname  (string Names)
         {
             int pos = Pos(" ", Names);
-            return Names.Substring(pos + 1, Names.Length - pos);
+            return Names.Substring(pos + 1, Names.Length - pos-1);
         }
 
         public  int Pos(string Substring, string String)

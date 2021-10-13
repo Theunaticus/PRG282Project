@@ -51,5 +51,16 @@ namespace PRG282Project.DataAccessLayer
             DA.Fill(Result);
             return Result;
         }
+
+        public  void    InsertRecord()
+        {
+
+        }
+
+        public enum TableChoice
+        {
+            tblStudents,
+            tblModules,
+        }
     }
 }

@@ -76,6 +76,7 @@ namespace PRG282Project
             this.lblModDesc = new System.Windows.Forms.Label();
             this.lblModName = new System.Windows.Forms.Label();
             this.lblModCode = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.gbStudFields.SuspendLayout();
             this.gbStudControls.SuspendLayout();
@@ -586,12 +587,28 @@ namespace PRG282Project
             this.lblModCode.TabIndex = 0;
             this.lblModCode.Text = "Module Code:";
             // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(61)))), ((int)(((byte)(58)))));
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(906, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(32, 28);
+            this.btnExit.TabIndex = 8;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // frmDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(941, 672);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.gbModFields);
             this.Controls.Add(this.gbModControls);
             this.Controls.Add(this.lblMods);
@@ -669,5 +686,6 @@ namespace PRG282Project
         private System.Windows.Forms.Label lblModDesc;
         private System.Windows.Forms.Label lblModName;
         private System.Windows.Forms.Label lblModCode;
+        private System.Windows.Forms.Button btnExit;
     }
 }

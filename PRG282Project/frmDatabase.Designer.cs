@@ -29,7 +29,7 @@ namespace PRG282Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvStudent = new System.Windows.Forms.DataGridView();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.lblStudNumber = new System.Windows.Forms.Label();
             this.lblStudNames = new System.Windows.Forms.Label();
             this.lblStudImage = new System.Windows.Forms.Label();
@@ -41,22 +41,22 @@ namespace PRG282Project
             this.txtStudNumber = new System.Windows.Forms.TextBox();
             this.txtStudNames = new System.Windows.Forms.TextBox();
             this.gbStudFields = new System.Windows.Forms.GroupBox();
+            this.lbCodes = new System.Windows.Forms.ListBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.cbbGender = new System.Windows.Forms.ComboBox();
+            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.btnStudImage = new System.Windows.Forms.Button();
             this.openImage = new System.Windows.Forms.OpenFileDialog();
-            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
-            this.cbbGender = new System.Windows.Forms.ComboBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.lbCodes = new System.Windows.Forms.ListBox();
             this.gbStudControls = new System.Windows.Forms.GroupBox();
-            this.lblStudents = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnRead = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnRead = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.lblStudents = new System.Windows.Forms.Label();
             this.dgvModules = new System.Windows.Forms.DataGridView();
             this.lblMods = new System.Windows.Forms.Label();
             this.gbModControls = new System.Windows.Forms.GroupBox();
@@ -68,15 +68,15 @@ namespace PRG282Project
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbModFields = new System.Windows.Forms.GroupBox();
+            this.lbResources = new System.Windows.Forms.ListBox();
+            this.lblResources = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.txtModCode = new System.Windows.Forms.TextBox();
             this.lblModDesc = new System.Windows.Forms.Label();
             this.lblModName = new System.Windows.Forms.Label();
             this.lblModCode = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblResources = new System.Windows.Forms.Label();
-            this.lbResources = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.gbStudFields.SuspendLayout();
             this.gbStudControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModules)).BeginInit();
@@ -84,13 +84,13 @@ namespace PRG282Project
             this.gbModFields.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgvStudent
+            // dgvStudents
             // 
-            this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Location = new System.Drawing.Point(16, 53);
-            this.dgvStudent.Name = "dgvStudent";
-            this.dgvStudent.Size = new System.Drawing.Size(511, 237);
-            this.dgvStudent.TabIndex = 0;
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.Location = new System.Drawing.Point(16, 53);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.Size = new System.Drawing.Size(511, 237);
+            this.dgvStudents.TabIndex = 0;
             // 
             // lblStudNumber
             // 
@@ -204,6 +204,50 @@ namespace PRG282Project
             this.gbStudFields.TabStop = false;
             this.gbStudFields.Text = "Student Information";
             // 
+            // lbCodes
+            // 
+            this.lbCodes.FormattingEnabled = true;
+            this.lbCodes.ItemHeight = 16;
+            this.lbCodes.Location = new System.Drawing.Point(362, 111);
+            this.lbCodes.Name = "lbCodes";
+            this.lbCodes.Size = new System.Drawing.Size(129, 84);
+            this.lbCodes.TabIndex = 15;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(362, 67);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(129, 22);
+            this.txtAddress.TabIndex = 14;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(362, 31);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(129, 22);
+            this.txtPhone.TabIndex = 13;
+            // 
+            // cbbGender
+            // 
+            this.cbbGender.AllowDrop = true;
+            this.cbbGender.FormattingEnabled = true;
+            this.cbbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female",
+            "Other"});
+            this.cbbGender.Location = new System.Drawing.Point(138, 171);
+            this.cbbGender.Name = "cbbGender";
+            this.cbbGender.Size = new System.Drawing.Size(129, 24);
+            this.cbbGender.TabIndex = 12;
+            // 
+            // dtpDOB
+            // 
+            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDOB.Location = new System.Drawing.Point(138, 133);
+            this.dtpDOB.Name = "dtpDOB";
+            this.dtpDOB.Size = new System.Drawing.Size(129, 22);
+            this.dtpDOB.TabIndex = 11;
+            // 
             // btnStudImage
             // 
             this.btnStudImage.BackColor = System.Drawing.Color.Black;
@@ -222,50 +266,6 @@ namespace PRG282Project
             // 
             this.openImage.FileName = "openFileDialog1";
             // 
-            // dtpDOB
-            // 
-            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDOB.Location = new System.Drawing.Point(138, 133);
-            this.dtpDOB.Name = "dtpDOB";
-            this.dtpDOB.Size = new System.Drawing.Size(129, 22);
-            this.dtpDOB.TabIndex = 11;
-            // 
-            // cbbGender
-            // 
-            this.cbbGender.AllowDrop = true;
-            this.cbbGender.FormattingEnabled = true;
-            this.cbbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Other"});
-            this.cbbGender.Location = new System.Drawing.Point(138, 171);
-            this.cbbGender.Name = "cbbGender";
-            this.cbbGender.Size = new System.Drawing.Size(129, 24);
-            this.cbbGender.TabIndex = 12;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(362, 31);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(129, 22);
-            this.txtPhone.TabIndex = 13;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(362, 67);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(129, 22);
-            this.txtAddress.TabIndex = 14;
-            // 
-            // lbCodes
-            // 
-            this.lbCodes.FormattingEnabled = true;
-            this.lbCodes.ItemHeight = 16;
-            this.lbCodes.Location = new System.Drawing.Point(362, 111);
-            this.lbCodes.Name = "lbCodes";
-            this.lbCodes.Size = new System.Drawing.Size(129, 84);
-            this.lbCodes.TabIndex = 15;
-            // 
             // gbStudControls
             // 
             this.gbStudControls.Controls.Add(this.btnSearch);
@@ -283,58 +283,35 @@ namespace PRG282Project
             this.gbStudControls.TabStop = false;
             this.gbStudControls.Text = "Student Operations:";
             // 
-            // lblStudents
+            // btnSearch
             // 
-            this.lblStudents.AutoSize = true;
-            this.lblStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudents.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lblStudents.Location = new System.Drawing.Point(226, 21);
-            this.lblStudents.Name = "lblStudents";
-            this.lblStudents.Size = new System.Drawing.Size(83, 24);
-            this.lblStudents.TabIndex = 3;
-            this.lblStudents.Text = "Students";
+            this.btnSearch.BackColor = System.Drawing.Color.Black;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(292, 74);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(155, 28);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // btnCreate
+            // txtSearch
             // 
-            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(61)))), ((int)(((byte)(58)))));
-            this.btnCreate.FlatAppearance.BorderSize = 0;
-            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(19, 31);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(94, 28);
-            this.btnCreate.TabIndex = 0;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = false;
+            this.txtSearch.Location = new System.Drawing.Point(364, 35);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(127, 22);
+            this.txtSearch.TabIndex = 5;
             // 
-            // btnRead
+            // lblSearch
             // 
-            this.btnRead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(198)))), ((int)(((byte)(35)))));
-            this.btnRead.FlatAppearance.BorderSize = 0;
-            this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRead.ForeColor = System.Drawing.Color.White;
-            this.btnRead.Location = new System.Drawing.Point(124, 31);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(94, 28);
-            this.btnRead.TabIndex = 1;
-            this.btnRead.Text = "Read";
-            this.btnRead.UseVisualStyleBackColor = false;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(198)))), ((int)(((byte)(35)))));
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(19, 74);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(94, 28);
-            this.btnUpdate.TabIndex = 2;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(238, 38);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(120, 16);
+            this.lblSearch.TabIndex = 4;
+            this.lblSearch.Text = "Search (Student #):";
             // 
             // btnDelete
             // 
@@ -350,35 +327,58 @@ namespace PRG282Project
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             // 
-            // lblSearch
+            // btnUpdate
             // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(238, 38);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(120, 16);
-            this.lblSearch.TabIndex = 4;
-            this.lblSearch.Text = "Search (Student #):";
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(198)))), ((int)(((byte)(35)))));
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(19, 74);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(94, 28);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
             // 
-            // txtSearch
+            // btnRead
             // 
-            this.txtSearch.Location = new System.Drawing.Point(364, 35);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(127, 22);
-            this.txtSearch.TabIndex = 5;
+            this.btnRead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(198)))), ((int)(((byte)(35)))));
+            this.btnRead.FlatAppearance.BorderSize = 0;
+            this.btnRead.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRead.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRead.ForeColor = System.Drawing.Color.White;
+            this.btnRead.Location = new System.Drawing.Point(124, 31);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Size = new System.Drawing.Size(94, 28);
+            this.btnRead.TabIndex = 1;
+            this.btnRead.Text = "Read";
+            this.btnRead.UseVisualStyleBackColor = false;
             // 
-            // btnSearch
+            // btnCreate
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.Black;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(292, 74);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(155, 28);
-            this.btnSearch.TabIndex = 6;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(61)))), ((int)(((byte)(58)))));
+            this.btnCreate.FlatAppearance.BorderSize = 0;
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.Location = new System.Drawing.Point(19, 31);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(94, 28);
+            this.btnCreate.TabIndex = 0;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = false;
+            // 
+            // lblStudents
+            // 
+            this.lblStudents.AutoSize = true;
+            this.lblStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudents.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lblStudents.Location = new System.Drawing.Point(226, 21);
+            this.lblStudents.Name = "lblStudents";
+            this.lblStudents.Size = new System.Drawing.Size(83, 24);
+            this.lblStudents.TabIndex = 3;
+            this.lblStudents.Text = "Students";
             // 
             // dgvModules
             // 
@@ -520,6 +520,31 @@ namespace PRG282Project
             this.gbModFields.TabStop = false;
             this.gbModFields.Text = "Module Information";
             // 
+            // lbResources
+            // 
+            this.lbResources.FormattingEnabled = true;
+            this.lbResources.ItemHeight = 16;
+            this.lbResources.Location = new System.Drawing.Point(161, 133);
+            this.lbResources.Name = "lbResources";
+            this.lbResources.Size = new System.Drawing.Size(207, 68);
+            this.lbResources.TabIndex = 16;
+            // 
+            // lblResources
+            // 
+            this.lblResources.AutoSize = true;
+            this.lblResources.Location = new System.Drawing.Point(16, 139);
+            this.lblResources.Name = "lblResources";
+            this.lblResources.Size = new System.Drawing.Size(125, 16);
+            this.lblResources.TabIndex = 14;
+            this.lblResources.Text = "Module Resources:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(161, 101);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(207, 22);
+            this.textBox2.TabIndex = 13;
+            // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(161, 64);
@@ -561,31 +586,6 @@ namespace PRG282Project
             this.lblModCode.TabIndex = 0;
             this.lblModCode.Text = "Module Code:";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(161, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(207, 22);
-            this.textBox2.TabIndex = 13;
-            // 
-            // lblResources
-            // 
-            this.lblResources.AutoSize = true;
-            this.lblResources.Location = new System.Drawing.Point(16, 139);
-            this.lblResources.Name = "lblResources";
-            this.lblResources.Size = new System.Drawing.Size(125, 16);
-            this.lblResources.TabIndex = 14;
-            this.lblResources.Text = "Module Resources:";
-            // 
-            // lbResources
-            // 
-            this.lbResources.FormattingEnabled = true;
-            this.lbResources.ItemHeight = 16;
-            this.lbResources.Location = new System.Drawing.Point(161, 133);
-            this.lbResources.Name = "lbResources";
-            this.lbResources.Size = new System.Drawing.Size(207, 68);
-            this.lbResources.TabIndex = 16;
-            // 
             // frmDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,13 +599,13 @@ namespace PRG282Project
             this.Controls.Add(this.lblStudents);
             this.Controls.Add(this.gbStudControls);
             this.Controls.Add(this.gbStudFields);
-            this.Controls.Add(this.dgvStudent);
+            this.Controls.Add(this.dgvStudents);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDatabase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDatabase";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDatabase_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.gbStudFields.ResumeLayout(false);
             this.gbStudFields.PerformLayout();
             this.gbStudControls.ResumeLayout(false);
@@ -622,7 +622,7 @@ namespace PRG282Project
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvStudent;
+        private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.Label lblStudNumber;
         private System.Windows.Forms.Label lblStudNames;
         private System.Windows.Forms.Label lblStudImage;

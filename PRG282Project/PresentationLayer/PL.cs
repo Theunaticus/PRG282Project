@@ -14,6 +14,7 @@ namespace PRG282Project.PresentationLayer
         {
             current = this;
         }
+       
 
         public  void    DisplayError    (string Message)
         {
@@ -27,7 +28,7 @@ namespace PRG282Project.PresentationLayer
                 frmDatabase.current.DisplayError(Message);
             }
         }
-
+        
         public  void DisplayDatabase    ()
         {
             frmDatabase.current.DisplayStudents();

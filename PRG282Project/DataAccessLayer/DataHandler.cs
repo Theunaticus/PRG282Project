@@ -4,29 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PRG282Project.DataLayer;
+using PRG282Project.PresentationLayer;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 
 namespace PRG282Project.DataAccessLayer
 {
     class DataHandler
     {
-        public static DataHandler current;
+        public static DataHandler current;//Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True
+        string ConnectionString = @"Data Source=DESKTOP-M2MPA17\SQLEXPRESS;Initial Catalog=PRG282Project;Integrated Security=True";
 
-        public void ConnectDatabase()
+        public bool ConnectDatabase()
         {
-            String Connect;
-            SqlConnection connection;
-
-            Connect = @"Server=LAPTOP-H72V6H51\SQLEXPRESS; Initial Catalog=PRG282Project; Integrated Security=SSPI";
-
-            connection = new SqlConnection(Connect);
-
-            connection.Open();
-            MessageBox.Show("Database Open!!!");
-            connection.Close();
-            MessageBox.Show("Database closed!!!");
+            try
+            {
+                SqlConnection connection = new SqlConnection(ConnectionString);
+                connection.Open();
+                connection.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                PL.current.DisplayError(e.Message);
+                return false;
+            }
         }
 
         public  DataHandler ()
@@ -39,6 +43,13 @@ namespace PRG282Project.DataAccessLayer
             return Userbase.current.GetAllUsers();
         }
 
-
+        public  DataTable   GetStudents ()
+        {
+            string Query = @"SELECT * FROM tblStudents";
+            SqlDataAdapter DA = new SqlDataAdapter(Query,ConnectionString);
+            DataTable Result = new DataTable();
+            DA.Fill(Result);
+            return Result;
+        }
     }
 }

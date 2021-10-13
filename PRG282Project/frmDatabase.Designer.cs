@@ -65,6 +65,7 @@ namespace PRG282Project
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbModFields = new System.Windows.Forms.GroupBox();
+            this.txtModResources = new System.Windows.Forms.TextBox();
             this.lblResources = new System.Windows.Forms.Label();
             this.txtModDesc = new System.Windows.Forms.TextBox();
             this.txtModName = new System.Windows.Forms.TextBox();
@@ -73,7 +74,7 @@ namespace PRG282Project
             this.lblModName = new System.Windows.Forms.Label();
             this.lblModCode = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.txtModResources = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.gbStudFields.SuspendLayout();
             this.gbStudControls.SuspendLayout();
@@ -181,7 +182,7 @@ namespace PRG282Project
             // 
             // gbStudFields
             // 
-            this.gbStudFields.Controls.Add(this.richTextBox1);
+            this.gbStudFields.Controls.Add(this.textBox2);
             this.gbStudFields.Controls.Add(this.txtAddress);
             this.gbStudFields.Controls.Add(this.txtPhone);
             this.gbStudFields.Controls.Add(this.cbbGender);
@@ -491,6 +492,13 @@ namespace PRG282Project
             this.gbModFields.TabStop = false;
             this.gbModFields.Text = "Module Information";
             // 
+            // txtModResources
+            // 
+            this.txtModResources.Location = new System.Drawing.Point(161, 139);
+            this.txtModResources.Name = "txtModResources";
+            this.txtModResources.Size = new System.Drawing.Size(207, 22);
+            this.txtModResources.TabIndex = 15;
+            // 
             // lblResources
             // 
             this.lblResources.AutoSize = true;
@@ -563,12 +571,13 @@ namespace PRG282Project
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // txtModResources
+            // textBox2
             // 
-            this.txtModResources.Location = new System.Drawing.Point(161, 139);
-            this.txtModResources.Name = "txtModResources";
-            this.txtModResources.Size = new System.Drawing.Size(207, 22);
-            this.txtModResources.TabIndex = 15;
+            this.textBox2.Location = new System.Drawing.Point(283, 133);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(208, 22);
+            this.textBox2.TabIndex = 15;
+            this.textBox2.Visible = false;
             // 
             // frmDatabase
             // 
@@ -652,5 +661,6 @@ namespace PRG282Project
         private System.Windows.Forms.Label lblModCode;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox txtModResources;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

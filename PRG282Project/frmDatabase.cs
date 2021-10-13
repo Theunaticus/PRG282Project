@@ -83,7 +83,7 @@ namespace PRG282Project
                         string Gender = cbbGender.SelectedItem.ToString();
                         string Phone = txtPhone.Text;
                         string Address = txtAddress.Text;
-                        string Codes = lbCodes.Text;
+                        string Codes = textBox2.Text;
                         string Path = AL.current.LastImageFile;
                         StudentData Data = new StudentData(Number, Name, Surname, DOB, Gender, Phone, Address, Codes, Path);
                         AL.current.CreateRecord(Data);
@@ -237,7 +237,7 @@ namespace PRG282Project
                         string Gender = cbbGender.SelectedItem.ToString();
                         string Phone = txtPhone.Text;
                         string Address = txtAddress.Text;
-                        string Codes = lbCodes.Text;
+                        string Codes =  textBox2.Text;
                         string Path = AL.current.LastImageFile;
                         StudentData Data = new StudentData(Number, Name, Surname, DOB, Gender, Phone, Address, Codes, Path);
                         AL.current.UpdateRecord(Data);
